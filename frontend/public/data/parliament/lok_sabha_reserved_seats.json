@@ -1,0 +1,30 @@
+{
+  "scope_notes": {
+    "rajya_sabha": "No SC/ST seat reservation exists in the Rajya Sabha. Article 330 covers only the Lok Sabha (House of the People); Rajya Sabha members are indirectly elected by state legislatures with no reservation mechanism. Confirmed dead end -- not a gap in this dataset.",
+    "obc": "No OBC seat reservation exists in Parliament (Lok Sabha or Rajya Sabha) or in any State Legislative Assembly. OBC reservation under Indian law applies only to local bodies (Panchayati Raj institutions and municipalities) via the 73rd and 74th Constitutional Amendments -- a different tier of government entirely. Confirmed dead end.",
+    "state_assemblies": "Article 332 reserves SC/ST seats in State Legislative Assemblies too, proportional to each state's SC/ST population. Out of scope for this national-only v1 (consistent with the crime/representation tracks' scope decision) -- a future state-level drill-down phase would need this.",
+    "actual_elected_beyond_reserved_seats": "SC/ST candidates can and do also win on unreserved/general seats, so total SC/ST representation in the Lok Sabha exceeds the reserved-seat count. No single official, continuously-updated dataset compiling this (i.e. every winning candidate's self-declared social category, election over election) was found -- this would need constituency-by-constituency compilation, similar to the OBC-crime-data dead end. Not included; the numbers here are reserved-seat allocations only, not actual elected representation."
+  },
+  "delimitation_eras": [
+    {
+      "era_label": "1976 delimitation (based on 1971 Census)",
+      "applicable_elections": "6th through 14th Lok Sabha (1977-2004 general elections)",
+      "total_seats": 543,
+      "sc_reserved_seats": 79,
+      "st_reserved_seats": 41,
+      "source": "Cross-validated via two independent web searches citing the pre-2008 delimitation figures (e.g. reporting on the 2008 Delimitation Commission order noting seats increased 'from 79 and 41' for SC/ST respectively).",
+      "sc_pct_of_seats": 14.55,
+      "st_pct_of_seats": 7.55
+    },
+    {
+      "era_label": "2008 delimitation (based on 2001 Census, frozen until post-2026 census)",
+      "applicable_elections": "15th through 18th Lok Sabha (2009, 2014, 2019, 2024 general elections)",
+      "total_seats": 543,
+      "sc_reserved_seats": 84,
+      "st_reserved_seats": 47,
+      "source": "2008 Delimitation Commission order; cross-validated via multiple independent sources reporting the current 84 SC / 47 ST figures for the 2019 and 2024 general elections.",
+      "sc_pct_of_seats": 15.47,
+      "st_pct_of_seats": 8.66
+    }
+  ]
+}

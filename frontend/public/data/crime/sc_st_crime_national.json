@@ -1,0 +1,128 @@
+[
+  {
+    "category": "SC",
+    "year": 2016,
+    "total_cases": 40833,
+    "population": 221377913,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 18.44,
+    "schema_era": "pre_2017_definitions"
+  },
+  {
+    "category": "SC",
+    "year": 2017,
+    "total_cases": 43203,
+    "population": 225610186,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 19.15,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "SC",
+    "year": 2018,
+    "total_cases": 42793,
+    "population": 229923372,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 18.61,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "SC",
+    "year": 2019,
+    "total_cases": 46194,
+    "population": 234319016,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 19.71,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "SC",
+    "year": 2020,
+    "total_cases": 50291,
+    "population": 238798696,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 21.06,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "SC",
+    "year": 2021,
+    "total_cases": 50900,
+    "population": 243364018,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 20.92,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "SC",
+    "year": 2022,
+    "total_cases": 57582,
+    "population": 248016619,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 23.22,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "ST",
+    "year": 2016,
+    "total_cases": 6573,
+    "population": 115964918,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 5.67,
+    "schema_era": "pre_2017_definitions"
+  },
+  {
+    "category": "ST",
+    "year": 2017,
+    "total_cases": 7159,
+    "population": 118454315,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 6.04,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "ST",
+    "year": 2018,
+    "total_cases": 6561,
+    "population": 120997151,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 5.42,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "ST",
+    "year": 2019,
+    "total_cases": 8367,
+    "population": 123594573,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 6.77,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "ST",
+    "year": 2020,
+    "total_cases": 8316,
+    "population": 126247754,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 6.59,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "ST",
+    "year": 2021,
+    "total_cases": 8846,
+    "population": 128957891,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 6.86,
+    "schema_era": "post_2017_definitions"
+  },
+  {
+    "category": "ST",
+    "year": 2022,
+    "total_cases": 10098,
+    "population": 131726205,
+    "population_is_projected": true,
+    "rate_per_lakh_population": 7.67,
+    "schema_era": "post_2017_definitions"
+  }
+]

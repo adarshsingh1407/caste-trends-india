@@ -1,0 +1,33 @@
+{
+  "description": "National totals (India, all states/UTs) for cases registered, chargesheeted, convicted, conviction rate, and cases pending trial, under the SC/ST Prevention of Atrocities Act, 2018-2022. Transcribed directly from a Rajya Sabha Unstarred Question reply (Ministry of Home Affairs), which itself sources NCRB's 'Crime in India' publication. This is a DIFFERENT official compilation from the district-level crime CSVs used in scripts/crime/clean.py (that pipeline sums all crime-head columns per district; this one is MHA's own state-wise PoA-Act-specific total) -- the two are conceptually distinct metrics, though they cross-validate closely for overlapping years (national SC 2018: 42,539 here vs 42,793 in the other pipeline, within 0.6%).",
+  "source_document": {
+    "title": "Rajya Sabha Unstarred Question No. 301 -- Atrocities Against Scheduled Castes and Scheduled Tribes",
+    "answered_on": "24 July 2024",
+    "asked_by": "Shri Mukul Balkrishna Wasnik",
+    "answered_by": "Minister of State in the Ministry of Home Affairs (Shri Bandi Sanjay Kumar)",
+    "url": "https://www.cvmc.in/wp-content/uploads/2024/10/20240724-RS-AU301-Crime-statistics-2018-2022.pdf",
+    "table_location": "Annexure-I (Scheduled Castes), Annexure-II (Scheduled Tribes), 'TOTAL (ALL INDIA)' row of each year's table",
+    "underlying_source": "NCRB 'Crime in India' publication, per the reply's own text ('the latest published report pertains to the year 2022')"
+  },
+  "field_definitions": {
+    "cases_registered": "CR -- new cases registered that year",
+    "cases_chargesheeted": "CCS -- cases where police filed a chargesheet",
+    "cases_convicted": "CON -- cases resulting in conviction",
+    "conviction_rate_pct": "CVR -- conviction rate percentage as stated in the source (methodology not detailed in the reply; treated as reported, not recomputed)",
+    "cases_pending_trial_year_end": "CPTEY -- backlog of cases still in trial at year end (cumulative, not just that year's cases)"
+  },
+  "sc": [
+    { "year": 2018, "cases_registered": 42539, "cases_chargesheeted": 34585, "cases_convicted": 3420, "conviction_rate_pct": 28.6, "cases_pending_trial_year_end": 172794 },
+    { "year": 2019, "cases_registered": 45948, "cases_chargesheeted": 34741, "cases_convicted": 4007, "conviction_rate_pct": 32.1, "cases_pending_trial_year_end": 190345 },
+    { "year": 2020, "cases_registered": 50268, "cases_chargesheeted": 39127, "cases_convicted": 3241, "conviction_rate_pct": 42.5, "cases_pending_trial_year_end": 221798 },
+    { "year": 2021, "cases_registered": 50879, "cases_chargesheeted": 41719, "cases_convicted": 3640, "conviction_rate_pct": 36.0, "cases_pending_trial_year_end": 253301 },
+    { "year": 2022, "cases_registered": 57569, "cases_chargesheeted": 45815, "cases_convicted": 5629, "conviction_rate_pct": 34.1, "cases_pending_trial_year_end": 282428 }
+  ],
+  "st": [
+    { "year": 2018, "cases_registered": 6525, "cases_chargesheeted": 5584, "cases_convicted": 503, "conviction_rate_pct": 23.5, "cases_pending_trial_year_end": 26282 },
+    { "year": 2019, "cases_registered": 7567, "cases_chargesheeted": 5917, "cases_convicted": 741, "conviction_rate_pct": 26.4, "cases_pending_trial_year_end": 30084 },
+    { "year": 2020, "cases_registered": 8270, "cases_chargesheeted": 6483, "cases_convicted": 347, "conviction_rate_pct": 28.5, "cases_pending_trial_year_end": 35339 },
+    { "year": 2021, "cases_registered": 8799, "cases_chargesheeted": 7182, "cases_convicted": 548, "conviction_rate_pct": 28.1, "cases_pending_trial_year_end": 40553 },
+    { "year": 2022, "cases_registered": 10064, "cases_chargesheeted": 8062, "cases_convicted": 901, "conviction_rate_pct": 28.1, "cases_pending_trial_year_end": 45388 }
+  ]
+}

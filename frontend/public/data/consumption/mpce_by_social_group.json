@@ -1,0 +1,112 @@
+{
+  "critical_caveat": "There is NO usable official household consumption survey between 2011-12 and 2022-23. The NSS 2017-18 consumption expenditure survey was conducted but never officially released -- the government withdrew it citing 'data quality issues', a widely-reported and controversial decision. This means the 2011-12 to 2022-23 gap is not just a missing data point, it's an 11-year gap with no official alternative. Additionally, MoSPI itself has noted that HCES 2022-23 used a revised survey methodology (modified questionnaire design, different recall periods for different item categories) compared to earlier NSS rounds -- so the 2022-23 point is not strictly methodologically comparable to 2004-05/2009-10/2011-12, even though the same 'percentage difference from average' framing is applied consistently here. Treat the trend direction as informative but the exact magnitude of change across the 2011-12 to 2022-23 gap with more caution than the within-round comparisons (2004-05 vs 2009-10 vs 2011-12, all from consistent methodology).",
+  "sources": {
+    "2011_12": {
+      "report": "NSS Report No. 562: Household Consumer Expenditure across Socio-Economic Groups, 2011-12 (NSS 68th Round, July 2011-June 2012)",
+      "publisher": "National Sample Survey Office, Ministry of Statistics and Programme Implementation",
+      "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/nss_rep_562_27feb15.pdf",
+      "tables_used": {
+        "absolute_mpce": "Statement 3.1 (page 15): State/UT-wise average MPCE (Rs.) by social group for each sector -- All-India row used here.",
+        "historical_gap_series": "Statement 3.11 (page 28): Inter-social-group differences in average MPCE: change over time, all-India -- percentage difference of each group's average MPCE from the all-social-groups average, for 2004-05, 2009-10, and 2011-12. Sourced in turn from NSS Report No. 544 for the 2004-05/2009-10 points."
+      }
+    },
+    "2022_23": {
+      "report": "NSS Report No. 591: Survey on Household Consumption Expenditure: 2022-23",
+      "publisher": "National Sample Survey Office, Ministry of Statistics and Programme Implementation",
+      "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/Report_591_HCES_2022-23New.pdf",
+      "tables_used": {
+        "absolute_mpce_with_imputation": "Table 3.21 (page 54): Average MPCE (Rs.) by social group in 2022-23, major states -- All-India row used here. 'With imputation' means the value of items received free through social welfare programs is included, which is the report's preferred headline figure."
+      }
+    }
+  },
+  "absolute_mpce_rs": {
+    "note": "All-India average MPCE in rupees, current prices of each survey year (not inflation-adjusted between years).",
+    "2011_12": {
+      "rural": {
+        "ST": 1122,
+        "SC": 1252,
+        "OBC": 1439,
+        "Others": 1719,
+        "all": 1430
+      },
+      "urban": {
+        "ST": 2193,
+        "SC": 2028,
+        "OBC": 2275,
+        "Others": 3242,
+        "all": 2630
+      }
+    },
+    "2022_23": {
+      "rural": {
+        "ST": 3098,
+        "SC": 3571,
+        "OBC": 3935,
+        "Others": 4472,
+        "all": 3860
+      },
+      "urban": {
+        "ST": 5472,
+        "SC": 5386,
+        "OBC": 6245,
+        "Others": 7382,
+        "all": 6521
+      }
+    }
+  },
+  "pct_gap_from_average": {
+    "note": "Percentage difference of each group's average MPCE from the all-social-groups average MPCE, same year, same sector. Negative = below average. 2004-05 and 2009-10 figures are transcribed directly from the source's own Statement 3.11. The 2011-12 figures are also transcribed directly from Statement 3.11 (and were cross-checked by recomputing them from the absolute MPCE table above -- they match exactly). The 2022-23 figures are COMPUTED here using the identical formula ((group_mpce - all_mpce) / all_mpce * 100) for methodological consistency with the source's own approach -- not values stated in the 2022-23 report itself, which doesn't include this specific framing.",
+    "rural": {
+      "2004-05": {
+        "ST": -23.7,
+        "SC": -15.0,
+        "OBC": -0.4,
+        "Others": 22.6
+      },
+      "2009-10": {
+        "ST": -17.2,
+        "SC": -11.9,
+        "OBC": -1.6,
+        "Others": 21.6
+      },
+      "2011-12": {
+        "ST": -21.5,
+        "SC": -12.4,
+        "OBC": 0.6,
+        "Others": 20.2
+      },
+      "2022-23": {
+        "ST": -19.7,
+        "SC": -7.5,
+        "OBC": 1.9,
+        "Others": 15.9
+      }
+    },
+    "urban": {
+      "2004-05": {
+        "ST": -18.5,
+        "SC": -27.9,
+        "OBC": -17.2,
+        "Others": 24.1
+      },
+      "2009-10": {
+        "ST": -9.5,
+        "SC": -27.2,
+        "OBC": -15.4,
+        "Others": 24.3
+      },
+      "2011-12": {
+        "ST": -16.6,
+        "SC": -22.9,
+        "OBC": -13.5,
+        "Others": 23.3
+      },
+      "2022-23": {
+        "ST": -16.1,
+        "SC": -17.4,
+        "OBC": -4.2,
+        "Others": 13.2
+      }
+    }
+  }
+}

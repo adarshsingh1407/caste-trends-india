@@ -1,0 +1,146 @@
+[
+  {
+    "year": 2011,
+    "sc_population": 201378086,
+    "st_population": 104281034,
+    "sc_pct": 15.97,
+    "st_pct": 8.27,
+    "is_projected": false,
+    "method": "flat"
+  },
+  {
+    "year": 2012,
+    "sc_population": 205228006,
+    "st_population": 106519615,
+    "sc_pct": 16.05,
+    "st_pct": 8.33,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2013,
+    "sc_population": 209151527,
+    "st_population": 108806251,
+    "sc_pct": 16.14,
+    "st_pct": 8.4,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2014,
+    "sc_population": 213150059,
+    "st_population": 111141974,
+    "sc_pct": 16.24,
+    "st_pct": 8.47,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2015,
+    "sc_population": 217225033,
+    "st_population": 113527838,
+    "sc_pct": 16.36,
+    "st_pct": 8.55,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2016,
+    "sc_population": 221377913,
+    "st_population": 115964918,
+    "sc_pct": 16.47,
+    "st_pct": 8.63,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2017,
+    "sc_population": 225610186,
+    "st_population": 118454315,
+    "sc_pct": 16.59,
+    "st_pct": 8.71,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2018,
+    "sc_population": 229923372,
+    "st_population": 120997151,
+    "sc_pct": 16.73,
+    "st_pct": 8.8,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2019,
+    "sc_population": 234319016,
+    "st_population": 123594573,
+    "sc_pct": 16.87,
+    "st_pct": 8.9,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2020,
+    "sc_population": 238798696,
+    "st_population": 126247754,
+    "sc_pct": 17.03,
+    "st_pct": 9.0,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2021,
+    "sc_population": 243364018,
+    "st_population": 128957891,
+    "sc_pct": 17.21,
+    "st_pct": 9.12,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2022,
+    "sc_population": 248016619,
+    "st_population": 131726205,
+    "sc_pct": 17.4,
+    "st_pct": 9.24,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2023,
+    "sc_population": 252758168,
+    "st_population": 134553946,
+    "sc_pct": 17.58,
+    "st_pct": 9.36,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2024,
+    "sc_population": 257590365,
+    "st_population": 137442390,
+    "sc_pct": 17.75,
+    "st_pct": 9.47,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2025,
+    "sc_population": 262514944,
+    "st_population": 140392840,
+    "sc_pct": 17.93,
+    "st_pct": 9.59,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  },
+  {
+    "year": 2026,
+    "sc_population": 267533670,
+    "st_population": 143406626,
+    "sc_pct": 18.12,
+    "st_pct": 9.71,
+    "is_projected": true,
+    "method": "CAGR extrapolated from 2001-2011 census growth rate"
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "description": "National SC/ST population anchor points from the two most recent Indian censuses, plus a total-population reference series used to compute SC/ST population SHARE by year (not just absolute counts). India has not held a census since 2011 (the 2021 census was postponed indefinitely). Used by scripts/common/population_projection.py.",
+  "unit": "persons",
+  "geography": "national",
+  "anchors": [
+    {
+      "year": 2001,
+      "sc_population": 166635700,
+      "st_population": 84326240,
+      "source": "Census of India 2001"
+    },
+    {
+      "year": 2011,
+      "sc_population": 201378086,
+      "st_population": 104281034,
+      "total_population": 1210854977,
+      "source": "Census of India 2011"
+    }
+  ],
+  "total_population_by_year": {
+    "note": "UN World Population Prospects (2024 Revision), mid-year (July 1) estimates -- a DIFFERENT source/methodology from the Census 2011 total above (which was taken around March 2011, ~1.211 billion vs. UN's mid-2011 estimate of ~1.261 billion, a ~4% difference from differing reference dates and estimation methods). Used here only as the denominator for computing SC/ST population SHARE by year; SC/ST absolute population counts themselves still come from the Census-anchored CAGR projection, not from UN figures.",
+    "source": "UN Department of Economic and Social Affairs, Population Division, World Population Prospects: The 2024 Revision.",
+    "values": {
+      "2011": 1261224954, "2012": 1278674502, "2013": 1295829511, "2014": 1312277191,
+      "2015": 1328024498, "2016": 1343944296, "2017": 1359657400, "2018": 1374659064,
+      "2019": 1389030312, "2020": 1402617695, "2021": 1414203896, "2022": 1425423212,
+      "2023": 1438069596, "2024": 1450935791, "2025": 1463865525, "2026": 1476625576
+    }
+  },
+  "obc_general_note": "No equivalent projection is possible for OBC or General population share. India's census has not enumerated caste beyond SC/ST since 1931 -- the commonly-cited OBC figures (~52% from the Mandal Commission, 1980, itself an extrapolation from the 1931 count; ~41% from NSSO 1999-2000/2006 sample surveys) are two different old estimates using different methods, not two points on a trend that can be projected forward the way SC/ST's 2001->2011 census figures can. 'General/Other' as a residual (100% - SC% - ST% - OBC%) inherits all of that uncertainty: using the NSSO figure implies ~31% General; using Mandal's implies ~20% -- an 11-point swing depending purely on which decades-old OBC estimate is chosen. This is why population-share benchmarks elsewhere in this project are computed for SC/ST only, never for OBC/General."
+}

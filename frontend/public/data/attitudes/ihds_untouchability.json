@@ -1,0 +1,47 @@
+{
+  "methodology_note": "This was NOT sourced by scraping news, Reddit, or forums -- deliberately. That approach would have (1) a severe selection bias, since routine/everyday discrimination is specifically the kind of thing that does NOT make news (only severe or unusual incidents do, which would represent the extreme tail, not the 'how common' baseline); (2) no denominator, since a scraped incident count cannot produce a prevalence rate the way asking a representative sample of households can; (3) a demographic skew toward urban, English-speaking, internet-connected populations, unrepresentative of where this practice has been found most prevalent (rural India); and (4) real consent/privacy concerns around aggregating people's personal accounts of caste identity and discrimination without their knowledge. A nationally representative household survey is the correct instrument for a prevalence question, and IHDS-II already did this at scale (~42,000 households).",
+  "source": {
+    "paper": "Thorat, Amit and Joshi, Omkar (2020). 'The Continuing Practice of Untouchability in India: Patterns and Mitigating Influences.' Economic & Political Weekly, Vol LV, No 2, January 11, 2020.",
+    "underlying_survey": "India Human Development Survey, Round II (IHDS-II), 2011-12. NCAER (National Council of Applied Economic Research) and University of Maryland. ~42,000 households, nationally representative.",
+    "url": "https://socy.umd.edu/sites/socy.umd.edu/files/pubs/Thorat%20and%20Joshi%202019_The%20Continuning%20Practice%20of%20Untouchability%20in%20India.pdf",
+    "single_round_caveat": "This is a single-round snapshot (2011-12), not a trend -- IHDS-III field data collection completed June 2024, but as of this writing no published analysis of the untouchability-practice question from that round could be found. A future update could add a second data point if/when IHDS-III results on this question are published."
+  },
+  "table1_practice_by_social_group": {
+    "question": "Does any member of your household practise untouchability?",
+    "note": "This is Table 1 in the source paper. Its own stated 'Total' (21%) differs from the paper's separately-stated prose headline figure of 27% overall -- both come from the same paper; the discrepancy is in the source itself, not introduced here. Both are reported.",
+    "brahmins_pct": 44,
+    "forward_castes_pct": 18,
+    "obc_pct": 26,
+    "sc_pct": 11,
+    "st_pct": 17,
+    "table_total_pct": 21,
+    "prose_headline_total_pct": 27
+  },
+  "table2_specific_practice": {
+    "question": "Is it a problem if an SC enters the kitchen or uses utensils?",
+    "note": "A more specific, behavioral question (vs. Table 1's general framing) -- asked of non-SC respondents about a concrete scenario. This is Table 2 in the source paper.",
+    "brahmins_pct": 15,
+    "forward_castes_pct": 7,
+    "obc_pct": 11,
+    "sc_pct": 5,
+    "st_pct": 7,
+    "others_pct": 5,
+    "total_pct": 8.53
+  },
+  "rural_urban": {
+    "rural_pct": 30,
+    "urban_pct": 20
+  },
+  "income_quintile": {
+    "poorest_pct": 33,
+    "richest_pct": 23,
+    "note": "10 percentage point gap, poorest to richest quintile -- a much smaller gradient than the caste-group gradient, suggesting the practice is not simply a function of income."
+  },
+  "regional": {
+    "note": "Broad multi-state regions, not individual states -- exact state-wise figures were not given as a numeric table in the source paper, only this regional breakdown.",
+    "central_plains_pct": 49,
+    "north_pct": 40,
+    "hills_pct": 38,
+    "south_east_west_note": "Described in the source only as having the 'lowest incidences' -- no single combined percentage was stated for this grouping."
+  }
+}

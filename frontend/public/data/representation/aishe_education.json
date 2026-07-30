@@ -1,0 +1,74 @@
+{
+  "ger_trend": {
+    "note": "Gross Enrolment Ratio, age 18-23, based on 2011 Census population projection. No OBC GER series is published in this report -- only All/SC/ST.",
+    "years": [
+      {
+        "year": "2014-15",
+        "all": 23.7,
+        "sc": 18.9,
+        "st": 13.5,
+        "source": "prose"
+      },
+      {
+        "year": "2019-20",
+        "all": 25.6,
+        "sc": 22.3,
+        "st": 17.0,
+        "source": "chart+prose"
+      },
+      {
+        "year": "2020-21",
+        "all": 27.3,
+        "sc": 23.1,
+        "st": 18.9,
+        "source": "chart"
+      },
+      {
+        "year": "2021-22",
+        "all": 28.4,
+        "sc": 25.9,
+        "st": 21.2,
+        "source": "chart"
+      },
+      {
+        "year": "2022-23",
+        "all": 29.5,
+        "sc": 27.3,
+        "st": 22.6,
+        "source": "chart+prose"
+      },
+      {
+        "year": "2023-24",
+        "all": 30.0,
+        "sc": 27.8,
+        "st": 22.8,
+        "source": "chart+prose"
+      }
+    ]
+  },
+  "enrollment_share_latest": {
+    "year": "2023-24",
+    "total_enrollment_crore": 4.5,
+    "sc_pct_of_total": 15.5,
+    "st_pct_of_total": 6.4,
+    "obc_pct_of_total": 40.1,
+    "sc_count_lakh": 69.7,
+    "st_count_lakh": 28.83,
+    "obc_count_crore": 1.8,
+    "note": "Category is the student's own reported social category, not their admission category (per report's own clarification). total_enrollment_crore is from the Executive Summary ('Student enrolment reached 4.50 crores', page ~21) -- used to derive a General/Other residual share in scripts/representation/clean.py, since the report does not state a General-category percentage directly.",
+    "general_pct_of_total": 38.1,
+    "general_count_lakh": 171.47,
+    "population_share": {
+      "sc_pct": 17.75,
+      "st_pct": 9.47,
+      "year": 2024,
+      "note": "SC/ST share of total population, projected for this specific year (compound growth rate extrapolated from the 2001/2011 censuses, against a UN total-population estimate for the denominator -- see scripts/common/population_projection.py). Not held flat at the 2011 figure. No equivalent OBC/General share exists: India's census hasn't enumerated caste beyond SC/ST since 1931, so there's no recent anchor to project from -- only two old, methodologically different guesses (Mandal Commission ~52%, NSSO ~41%), not a projectable trend."
+    }
+  },
+  "enrollment_prior_year": {
+    "year": "2022-23",
+    "sc_count_lakh": 69.1,
+    "st_count_lakh": 28.72,
+    "obc_count_crore": 1.74
+  }
+}

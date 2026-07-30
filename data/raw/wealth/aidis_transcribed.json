@@ -1,0 +1,59 @@
+{
+  "description": "All India Debt & Investment Survey (AIDIS), NSSO/MoSPI -- the land/asset/debt-by-caste data the project brief called for as a genuine wealth/financial-strength metric, distinct from MPCE consumption (data/raw/consumption/) and from enrollment/employment share. National (All-India) figures only, consistent with this project's national-only v1 scope.",
+  "scope_note": "Asset holdings (AVA) by social group are only available as a single snapshot (2019) -- the prior AIDIS round's summary report (2012-13, NSS KI 70/18.2) breaks assets down by occupational category (cultivator/non-cultivator, self-employed/others) and by decile class, but NOT by social group. Debt (IOI/AOD) by social group IS available for both rounds, giving a genuine 2-point trend. This asymmetry is real, not an oversight -- flagged explicitly rather than forcing a fabricated 2012-13 asset-by-social-group figure.",
+  "sources": {
+    "2019": {
+      "report": "NSS Report No. 588: All India Debt & Investment Survey - 2019 (NSS 77th Round, January-December 2019)",
+      "publisher": "National Statistical Office, Ministry of Statistics and Programme Implementation",
+      "url": "https://mospi.gov.in/sites/default/files/publication_reports/Report%20no.%20588-AIDIS-77Rm-Sept.pdf",
+      "reference_date": "Assets as on 30.06.2018; debt as on 30.06.2018",
+      "tables_used": {
+        "assets": "Statement 3.3 (Chapter 3, page 21): Average Value of Assets (AVA) as on 30.06.2018, by social group.",
+        "debt": "Statement 3.9 (Chapter 3, page 29): IOI and AOD by Social Groups as on 30.06.2018.",
+        "debt_asset_ratio": "Statement 3.19 (Chapter 3, page 37): AVA, AOD and Debt to Asset Ratio (DAR) as on 30.06.2018 by Social groups."
+      }
+    },
+    "2012_13": {
+      "report": "NSS KI (70/18.2): Key Indicators of Debt and Investment in India (NSS 70th Round, January-December 2013)",
+      "publisher": "National Sample Survey Office, Ministry of Statistics and Programme Implementation",
+      "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/KI_70_18.2_19dec14.pdf",
+      "reference_date": "Debt as on 30.06.2012",
+      "tables_used": {
+        "debt": "Statement 3.6 (Chapter 3, page 17): Incidence of indebtedness (IOI) and average debt per household (AOD) by social group of household, all-India."
+      }
+    }
+  },
+  "assets_2019_rs": {
+    "note": "Average Value of Assets (AVA) per household, in rupees. Single snapshot only -- see scope_note.",
+    "rural": {
+      "ST": { "pct_households_owning_assets": 98.8, "ava_rs": 884000 },
+      "SC": { "pct_households_owning_assets": 99.3, "ava_rs": 879000 },
+      "OBC": { "pct_households_owning_assets": 99.6, "ava_rs": 1645000 },
+      "Others": { "pct_households_owning_assets": 99.4, "ava_rs": 2603000 },
+      "all": { "pct_households_owning_assets": 99.4, "ava_rs": 1592000 }
+    },
+    "urban": {
+      "ST": { "pct_households_owning_assets": 93.7, "ava_rs": 1890000 },
+      "SC": { "pct_households_owning_assets": 96.6, "ava_rs": 1315000 },
+      "OBC": { "pct_households_owning_assets": 98.8, "ava_rs": 2120000 },
+      "Others": { "pct_households_owning_assets": 98.0, "ava_rs": 4054000 },
+      "all": { "pct_households_owning_assets": 98.0, "ava_rs": 2717000 }
+    }
+  },
+  "debt_by_year": {
+    "note": "Incidence of Indebtedness (IOI, % of households with outstanding cash debt) and Average Amount of Debt (AOD, Rs. per household). A LOW IOI/AOD for a group is not necessarily 'financially healthy' -- combined with a low asset base (as with ST), it more plausibly reflects exclusion from formal/informal credit markets rather than an absence of need for credit. This is flagged explicitly in the UI, not left to be misread as a positive.",
+    "2012_13": {
+      "rural": { "ST": { "ioi_pct": 16.9, "aod_rs": 9610 }, "SC": { "ioi_pct": 30.9, "aod_rs": 24458 }, "OBC": { "ioi_pct": 35.7, "aod_rs": 36091 }, "Others": { "ioi_pct": 31.4, "aod_rs": 44565 }, "all": { "ioi_pct": 31.4, "aod_rs": 32522 } },
+      "urban": { "ST": { "ioi_pct": 16.4, "aod_rs": 48048 }, "SC": { "ioi_pct": 23.5, "aod_rs": 48556 }, "OBC": { "ioi_pct": 26.0, "aod_rs": 77809 }, "Others": { "ioi_pct": 18.9, "aod_rs": 106964 }, "all": { "ioi_pct": 22.4, "aod_rs": 84625 } }
+    },
+    "2019": {
+      "rural": { "ST": { "ioi_pct": 24.7, "aod_rs": 23592 }, "SC": { "ioi_pct": 34.7, "aod_rs": 36873 }, "OBC": { "ioi_pct": 38.3, "aod_rs": 66419 }, "Others": { "ioi_pct": 34.7, "aod_rs": 90053 }, "all": { "ioi_pct": 35.0, "aod_rs": 59748 } },
+      "urban": { "ST": { "ioi_pct": 17.3, "aod_rs": 80282 }, "SC": { "ioi_pct": 23.4, "aod_rs": 69256 }, "OBC": { "ioi_pct": 25.3, "aod_rs": 114789 }, "Others": { "ioi_pct": 19.3, "aod_rs": 151845 }, "all": { "ioi_pct": 22.4, "aod_rs": 120336 } }
+    }
+  },
+  "debt_asset_ratio_2019_pct": {
+    "note": "DAR = AOD as a percentage of AVA, same households, same date (30.06.2018). Single snapshot only.",
+    "rural": { "ST": 2.7, "SC": 4.2, "OBC": 4.0, "Others": 3.5, "all": 3.8 },
+    "urban": { "ST": 4.2, "SC": 5.2, "OBC": 5.4, "Others": 3.7, "all": 4.4 }
+  }
+}

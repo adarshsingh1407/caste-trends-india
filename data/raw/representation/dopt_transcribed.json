@@ -1,0 +1,60 @@
+{
+  "description": "Manually transcribed from the 'Reservation in the Central Government Services' chapter of three DoPT Annual Reports (PDF-only source, no clean CSV/API exists -- see /docs/data-sources.md). Every value here was read directly from the cited report's own summary table, not derived or estimated.",
+  "source_documents": {
+    "2016": {
+      "report": "DoPT Annual Report 2018-19",
+      "url": "https://dopt.gov.in/sites/default/files/AR%202018-19%20English.pdf",
+      "table_location": "Chapter 4, para 4.12, page 40",
+      "data_as_on": "01.01.2016",
+      "ministries_reporting": 78
+    },
+    "2021": {
+      "report": "DoPT Annual Report 2021-22",
+      "url": "https://dopt.gov.in/sites/default/files/AR%202021-22%20English.pdf",
+      "table_location": "Chapter 4, para 4.8, page 34",
+      "data_as_on": "01.01.2021",
+      "ministries_reporting": 72
+    },
+    "2024": {
+      "report": "DoPT Annual Report 2024-25",
+      "url": "https://dopt.gov.in/sites/default/files/AR2024-25English.pdf",
+      "table_location": "Chapter 4, para 4.8, page 35",
+      "data_as_on": "01.01.2024",
+      "ministries_reporting": 80
+    }
+  },
+  "years": [
+    {
+      "year": 2016,
+      "groups": {
+        "A": { "total": 84705, "sc": 11333, "sc_pct": 13.38, "st": 5013, "st_pct": 5.92, "obc": 11016, "obc_pct": 13.01 },
+        "B": { "total": 290941, "sc": 46625, "sc_pct": 16.03, "st": 20915, "st_pct": 7.19, "obc": 42995, "obc_pct": 14.78 },
+        "C_excl_safai_karamchari": { "total": 2834066, "sc": 489820, "sc_pct": 17.28, "st": 246700, "st_pct": 8.70, "obc": 641930, "obc_pct": 22.65 },
+        "C_safai_karamchari": { "total": 48951, "sc": 22108, "sc_pct": 45.16, "st": 3379, "st_pct": 6.90, "obc": 7076, "obc_pct": 14.46 },
+        "Total": { "total": 3258663, "sc": 569886, "sc_pct": 17.49, "st": 276007, "st_pct": 8.47, "obc": 703017, "obc_pct": 21.57 }
+      }
+    },
+    {
+      "year": 2021,
+      "groups": {
+        "A": { "total": 77429, "sc": 10072, "sc_pct": 13.01, "st": 4558, "st_pct": 5.89, "obc": 12817, "obc_pct": 16.55 },
+        "B": { "total": 147860, "sc": 24802, "sc_pct": 16.77, "st": 10480, "st_pct": 7.09, "obc": 24668, "obc_pct": 16.68 },
+        "C_excl_safai_karamchari": { "total": 1608901, "sc": 279284, "sc_pct": 17.36, "st": 126084, "st_pct": 7.84, "obc": 369202, "obc_pct": 22.95 },
+        "C_safai_karamchari": { "total": 44632, "sc": 14534, "sc_pct": 32.56, "st": 3148, "st_pct": 7.05, "obc": 8655, "obc_pct": 19.39 },
+        "Total": { "total": 1878822, "sc": 328692, "sc_pct": 17.49, "st": 144270, "st_pct": 7.68, "obc": 415342, "obc_pct": 22.11 }
+      }
+    },
+    {
+      "year": 2024,
+      "groups": {
+        "A": { "total": 119178, "sc": 16920, "sc_pct": 14.20, "st": 7793, "st_pct": 6.54, "obc": 22807, "obc_pct": 19.14 },
+        "B": { "total": 364307, "sc": 59006, "sc_pct": 16.20, "st": 27789, "st_pct": 7.63, "obc": 79952, "obc_pct": 21.95 },
+        "C_excl_safai_karamchari": { "total": 2727930, "sc": 456925, "sc_pct": 16.75, "st": 243872, "st_pct": 8.94, "obc": 744527, "obc_pct": 27.29 },
+        "C_safai_karamchari": { "total": 40737, "sc": 14971, "sc_pct": 36.75, "st": 3331, "st_pct": 8.18, "obc": 8614, "obc_pct": 21.15 },
+        "Total": { "total": 3252152, "sc": 547822, "sc_pct": 16.84, "st": 282785, "st_pct": 8.70, "obc": 855900, "obc_pct": 26.32 }
+      }
+    }
+  ],
+  "statutory_quotas": { "sc_pct": 15.0, "st_pct": 7.5, "obc_pct": 27.0 },
+  "ews_note": "No EWS column exists in this table in any of the three transcribed years, despite the 10% EWS quota existing since 2019 -- confirmed absent at the primary source, not a transcription gap."
+}

@@ -1,0 +1,224 @@
+[
+  {
+    "year": 2016,
+    "data_as_on": "01.01.2016",
+    "ministries_reporting": 78,
+    "coverage_gap": false,
+    "groups": {
+      "A": {
+        "total": 84705,
+        "sc": 11333,
+        "sc_pct": 13.38,
+        "st": 5013,
+        "st_pct": 5.92,
+        "obc": 11016,
+        "obc_pct": 13.01,
+        "general": 57343,
+        "general_pct": 67.7
+      },
+      "B": {
+        "total": 290941,
+        "sc": 46625,
+        "sc_pct": 16.03,
+        "st": 20915,
+        "st_pct": 7.19,
+        "obc": 42995,
+        "obc_pct": 14.78,
+        "general": 180406,
+        "general_pct": 62.01
+      },
+      "C_excl_safai_karamchari": {
+        "total": 2834066,
+        "sc": 489820,
+        "sc_pct": 17.28,
+        "st": 246700,
+        "st_pct": 8.7,
+        "obc": 641930,
+        "obc_pct": 22.65,
+        "general": 1455616,
+        "general_pct": 51.36
+      },
+      "C_safai_karamchari": {
+        "total": 48951,
+        "sc": 22108,
+        "sc_pct": 45.16,
+        "st": 3379,
+        "st_pct": 6.9,
+        "obc": 7076,
+        "obc_pct": 14.46,
+        "general": 16388,
+        "general_pct": 33.48
+      },
+      "Total": {
+        "total": 3258663,
+        "sc": 569886,
+        "sc_pct": 17.49,
+        "st": 276007,
+        "st_pct": 8.47,
+        "obc": 703017,
+        "obc_pct": 21.57,
+        "general": 1709753,
+        "general_pct": 52.47
+      }
+    },
+    "statutory_quotas": {
+      "sc_pct": 15.0,
+      "st_pct": 7.5,
+      "obc_pct": 27.0
+    },
+    "population_share": {
+      "sc_pct": 16.47,
+      "st_pct": 8.63,
+      "year": 2016,
+      "note": "SC/ST share of total population, projected for this specific year (compound growth rate extrapolated from the 2001/2011 censuses, against a UN total-population estimate for the denominator -- see scripts/common/population_projection.py). Not held flat at the 2011 figure. No equivalent OBC/General share exists: India's census hasn't enumerated caste beyond SC/ST since 1931, so there's no recent anchor to project from -- only two old, methodologically different guesses (Mandal Commission ~52%, NSSO ~41%), not a projectable trend."
+    }
+  },
+  {
+    "year": 2021,
+    "data_as_on": "01.01.2021",
+    "ministries_reporting": 72,
+    "coverage_gap": true,
+    "groups": {
+      "A": {
+        "total": 77429,
+        "sc": 10072,
+        "sc_pct": 13.01,
+        "st": 4558,
+        "st_pct": 5.89,
+        "obc": 12817,
+        "obc_pct": 16.55,
+        "general": 49982,
+        "general_pct": 64.55
+      },
+      "B": {
+        "total": 147860,
+        "sc": 24802,
+        "sc_pct": 16.77,
+        "st": 10480,
+        "st_pct": 7.09,
+        "obc": 24668,
+        "obc_pct": 16.68,
+        "general": 87910,
+        "general_pct": 59.45
+      },
+      "C_excl_safai_karamchari": {
+        "total": 1608901,
+        "sc": 279284,
+        "sc_pct": 17.36,
+        "st": 126084,
+        "st_pct": 7.84,
+        "obc": 369202,
+        "obc_pct": 22.95,
+        "general": 834331,
+        "general_pct": 51.86
+      },
+      "C_safai_karamchari": {
+        "total": 44632,
+        "sc": 14534,
+        "sc_pct": 32.56,
+        "st": 3148,
+        "st_pct": 7.05,
+        "obc": 8655,
+        "obc_pct": 19.39,
+        "general": 18295,
+        "general_pct": 40.99
+      },
+      "Total": {
+        "total": 1878822,
+        "sc": 328692,
+        "sc_pct": 17.49,
+        "st": 144270,
+        "st_pct": 7.68,
+        "obc": 415342,
+        "obc_pct": 22.11,
+        "general": 990518,
+        "general_pct": 52.72
+      }
+    },
+    "statutory_quotas": {
+      "sc_pct": 15.0,
+      "st_pct": 7.5,
+      "obc_pct": 27.0
+    },
+    "population_share": {
+      "sc_pct": 17.21,
+      "st_pct": 9.12,
+      "year": 2021,
+      "note": "SC/ST share of total population, projected for this specific year (compound growth rate extrapolated from the 2001/2011 censuses, against a UN total-population estimate for the denominator -- see scripts/common/population_projection.py). Not held flat at the 2011 figure. No equivalent OBC/General share exists: India's census hasn't enumerated caste beyond SC/ST since 1931, so there's no recent anchor to project from -- only two old, methodologically different guesses (Mandal Commission ~52%, NSSO ~41%), not a projectable trend."
+    }
+  },
+  {
+    "year": 2024,
+    "data_as_on": "01.01.2024",
+    "ministries_reporting": 80,
+    "coverage_gap": false,
+    "groups": {
+      "A": {
+        "total": 119178,
+        "sc": 16920,
+        "sc_pct": 14.2,
+        "st": 7793,
+        "st_pct": 6.54,
+        "obc": 22807,
+        "obc_pct": 19.14,
+        "general": 71658,
+        "general_pct": 60.13
+      },
+      "B": {
+        "total": 364307,
+        "sc": 59006,
+        "sc_pct": 16.2,
+        "st": 27789,
+        "st_pct": 7.63,
+        "obc": 79952,
+        "obc_pct": 21.95,
+        "general": 197560,
+        "general_pct": 54.23
+      },
+      "C_excl_safai_karamchari": {
+        "total": 2727930,
+        "sc": 456925,
+        "sc_pct": 16.75,
+        "st": 243872,
+        "st_pct": 8.94,
+        "obc": 744527,
+        "obc_pct": 27.29,
+        "general": 1282606,
+        "general_pct": 47.02
+      },
+      "C_safai_karamchari": {
+        "total": 40737,
+        "sc": 14971,
+        "sc_pct": 36.75,
+        "st": 3331,
+        "st_pct": 8.18,
+        "obc": 8614,
+        "obc_pct": 21.15,
+        "general": 13821,
+        "general_pct": 33.93
+      },
+      "Total": {
+        "total": 3252152,
+        "sc": 547822,
+        "sc_pct": 16.84,
+        "st": 282785,
+        "st_pct": 8.7,
+        "obc": 855900,
+        "obc_pct": 26.32,
+        "general": 1565645,
+        "general_pct": 48.14
+      }
+    },
+    "statutory_quotas": {
+      "sc_pct": 15.0,
+      "st_pct": 7.5,
+      "obc_pct": 27.0
+    },
+    "population_share": {
+      "sc_pct": 17.75,
+      "st_pct": 9.47,
+      "year": 2024,
+      "note": "SC/ST share of total population, projected for this specific year (compound growth rate extrapolated from the 2001/2011 censuses, against a UN total-population estimate for the denominator -- see scripts/common/population_projection.py). Not held flat at the 2011 figure. No equivalent OBC/General share exists: India's census hasn't enumerated caste beyond SC/ST since 1931, so there's no recent anchor to project from -- only two old, methodologically different guesses (Mandal Commission ~52%, NSSO ~41%), not a projectable trend."
+    }
+  }
+]

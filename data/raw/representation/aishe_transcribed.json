@@ -1,0 +1,36 @@
+{
+  "description": "Manually transcribed from the AISHE Final Report 2023-24 (PDF-only source -- see /docs/data-sources.md). GER trend values for 2019-20 through 2023-24 were reconstructed from Figure 64's chart data-label positions (word x/y coordinates), then cross-validated against the report's own prose statements, which independently confirm the 2019-20, 2022-23, and 2023-24 values for every category. The 2014-15 anchor points come directly from prose ('GER has increased by 8.9 points from 18.9', etc).",
+  "source_document": {
+    "report": "AISHE Final Report 2023-24",
+    "url": "https://cdnbbsr.s3waas.gov.in/s392049debbe566ca5782a3045cf300a3c/uploads/2026/07/202607131602421770.pdf",
+    "table_location": "Section 2.3/3.7, Figure 64 (page ~60) and Section 1 headline bullets (page ~19-22)"
+  },
+  "ger_trend": {
+    "note": "Gross Enrolment Ratio, age 18-23, based on 2011 Census population projection. No OBC GER series is published in this report -- only All/SC/ST.",
+    "years": [
+      { "year": "2014-15", "all": 23.7, "sc": 18.9, "st": 13.5, "source": "prose" },
+      { "year": "2019-20", "all": 25.6, "sc": 22.3, "st": 17.0, "source": "chart+prose" },
+      { "year": "2020-21", "all": 27.3, "sc": 23.1, "st": 18.9, "source": "chart" },
+      { "year": "2021-22", "all": 28.4, "sc": 25.9, "st": 21.2, "source": "chart" },
+      { "year": "2022-23", "all": 29.5, "sc": 27.3, "st": 22.6, "source": "chart+prose" },
+      { "year": "2023-24", "all": 30.0, "sc": 27.8, "st": 22.8, "source": "chart+prose" }
+    ]
+  },
+  "enrollment_share_latest": {
+    "year": "2023-24",
+    "total_enrollment_crore": 4.50,
+    "sc_pct_of_total": 15.5,
+    "st_pct_of_total": 6.4,
+    "obc_pct_of_total": 40.1,
+    "sc_count_lakh": 69.7,
+    "st_count_lakh": 28.83,
+    "obc_count_crore": 1.80,
+    "note": "Category is the student's own reported social category, not their admission category (per report's own clarification). total_enrollment_crore is from the Executive Summary ('Student enrolment reached 4.50 crores', page ~21) -- used to derive a General/Other residual share in scripts/representation/clean.py, since the report does not state a General-category percentage directly."
+  },
+  "enrollment_prior_year": {
+    "year": "2022-23",
+    "sc_count_lakh": 69.1,
+    "st_count_lakh": 28.72,
+    "obc_count_crore": 1.74
+  }
+}
