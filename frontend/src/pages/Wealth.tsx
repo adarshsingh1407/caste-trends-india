@@ -1,4 +1,5 @@
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Link } from "react-router-dom";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
 import { ChartHelp } from "../components/ChartHelp";
@@ -78,6 +79,14 @@ export function Wealth() {
               ST and SC households hold roughly a third of the asset value of "Others" households in both rural and
               urban India — a starker gap than either the education or consumption tracks show. OBC sits between
               SC/ST and Others in both sectors.
+            </p>
+            <p className="card-note">
+              <strong>Is this gap narrowing, and how fast?</strong> This dashboard's own AIDIS data is a single 2019
+              snapshot, so it can't say. But academic research that does track multiple AIDIS rounds finds no clean
+              convergence to extrapolate a timeline from — one 2023 study (India/US comparison) concludes "no
+              convergence in sight"; another (1961–2012) finds forward castes' wealth growing <em>faster</em> than
+              lower castes', not slower. See <Link to="/data-sources">Data Sources</Link> for the studies and exact
+              numbers.
             </p>
           </div>
 

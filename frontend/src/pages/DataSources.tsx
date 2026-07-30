@@ -171,6 +171,14 @@ export function DataSources() {
           report's asset table is broken down by occupational category, not social group, so no comparable earlier
           data point exists for assets. Debt does have a real 2012-13 → 2019 comparison.
         </p>
+        <p className="card-note">
+          <strong>Is the wealth gap narrowing, and how fast?</strong> No published research supports a "years to
+          parity" estimate. The two academic studies that track this across multiple AIDIS rounds — which this
+          single-snapshot data can't do — find no clean convergence: Ishan Anand (IIT Delhi/World Bank, 2023)
+          concludes "no convergence in sight" after tracking the Forward-Caste/SC wealth ratio 2002–2019; Nitin
+          Kumar Bharti (World Inequality Lab, 2018, using AIDIS 1961–2012) finds forward castes' wealth growing
+          <em> faster</em> than lower castes', not slower. Full detail and citations in Data Sources.
+        </p>
       </div>
 
       <div className="card">
