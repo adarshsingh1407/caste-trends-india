@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useOpenAbout } from "./AboutContext";
 import { ThemeToggle } from "./ThemeToggle";
+import { BrandIcon } from "./BrandIcon";
 
 export function Layout() {
   const openAbout = useOpenAbout();
@@ -11,9 +12,12 @@ export function Layout() {
     <>
       <header className="app-header">
         <div className="app-header-inner">
-          <div>
-            <div className="brand">Caste Trends</div>
-            <div className="brand-sub">India</div>
+          <div className="brand-block">
+            <BrandIcon />
+            <div>
+              <div className="brand">Caste Trends</div>
+              <div className="brand-sub">India</div>
+            </div>
           </div>
           <div className="header-right">
             <button

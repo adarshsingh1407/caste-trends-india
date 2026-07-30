@@ -180,6 +180,18 @@ a {
   flex-wrap: wrap;
 }
 
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
 .brand {
   font-size: 16px;
   font-weight: 700;
@@ -813,6 +825,11 @@ table.data-table th {
 @media (max-width: 600px) {
   .app-header-inner {
     padding: 12px 16px;
+  }
+
+  .brand-icon {
+    width: 28px;
+    height: 28px;
   }
 
   .app-main {
