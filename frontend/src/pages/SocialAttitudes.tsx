@@ -66,11 +66,27 @@ export function SocialAttitudes() {
                   { group: "SC", pct: data.table1_practice_by_social_group.sc_pct },
                   { group: "ST", pct: data.table1_practice_by_social_group.st_pct },
                 ]}
-                margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+                margin={{ top: 10, right: 20, bottom: 18, left: 4 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                <XAxis dataKey="group" tick={{ fontSize: 12 }} />
-                <YAxis tick={{ fontSize: 12 }} width={36} unit="%" />
+                <XAxis
+                  dataKey="group"
+                  tick={{ fontSize: 12 }}
+                  label={{ value: "Social group", position: "insideBottom", offset: -12, fontSize: 11.5, fill: "var(--color-text-muted)" }}
+                />
+                <YAxis
+                  tick={{ fontSize: 12 }}
+                  width={44}
+                  unit="%"
+                  label={{
+                    value: "% admitting practice",
+                    angle: -90,
+                    position: "insideLeft",
+                    fontSize: 11.5,
+                    fill: "var(--color-text-muted)",
+                    style: { textAnchor: "middle" },
+                  }}
+                />
                 <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v}%`} />
                 <Bar
                   dataKey="pct"
@@ -113,11 +129,27 @@ export function SocialAttitudes() {
                   { group: "ST", pct: data.table2_specific_practice.st_pct },
                   { group: "Others", pct: data.table2_specific_practice.others_pct },
                 ]}
-                margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+                margin={{ top: 10, right: 20, bottom: 18, left: 4 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                <XAxis dataKey="group" tick={{ fontSize: 12 }} />
-                <YAxis tick={{ fontSize: 12 }} width={36} unit="%" />
+                <XAxis
+                  dataKey="group"
+                  tick={{ fontSize: 12 }}
+                  label={{ value: "Social group", position: "insideBottom", offset: -12, fontSize: 11.5, fill: "var(--color-text-muted)" }}
+                />
+                <YAxis
+                  tick={{ fontSize: 12 }}
+                  width={44}
+                  unit="%"
+                  label={{
+                    value: "% saying yes",
+                    angle: -90,
+                    position: "insideLeft",
+                    fontSize: 11.5,
+                    fill: "var(--color-text-muted)",
+                    style: { textAnchor: "middle" },
+                  }}
+                />
                 <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v}%`} />
                 <Bar
                   dataKey="pct"

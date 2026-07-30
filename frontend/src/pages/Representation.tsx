@@ -64,10 +64,26 @@ export function Representation() {
         {aishe.data && (
           <>
             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={aishe.data.ger_trend.years} margin={{ top: 10, right: 20, bottom: 0, left: 0 }}>
+              <LineChart data={aishe.data.ger_trend.years} margin={{ top: 10, right: 20, bottom: 18, left: 4 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                <XAxis dataKey="year" tick={{ fontSize: 12.5 }} />
-                <YAxis tick={{ fontSize: 12.5 }} width={40} domain={[0, "dataMax + 5"]} />
+                <XAxis
+                  dataKey="year"
+                  tick={{ fontSize: 12.5 }}
+                  label={{ value: "Year", position: "insideBottom", offset: -12, fontSize: 11.5, fill: "var(--color-text-muted)" }}
+                />
+                <YAxis
+                  tick={{ fontSize: 12.5 }}
+                  width={48}
+                  domain={[0, "dataMax + 5"]}
+                  label={{
+                    value: "Gross Enrolment Ratio (%)",
+                    angle: -90,
+                    position: "insideLeft",
+                    fontSize: 11.5,
+                    fill: "var(--color-text-muted)",
+                    style: { textAnchor: "middle" },
+                  }}
+                />
                 <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} />
                 <Line type="monotone" dataKey="all" name="All categories" stroke={CATEGORY_COLOR.All} strokeWidth={2} dot={{ r: 3 }} />
                 <Line type="monotone" dataKey="sc" name="SC" stroke={CATEGORY_COLOR.SC} strokeWidth={2.5} dot={{ r: 3 }} />
@@ -201,11 +217,23 @@ export function Representation() {
                   OBC: yearRow.groups[g].obc_pct,
                   "General/Other": yearRow.groups[g].general_pct,
                 }))}
-                margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+                margin={{ top: 10, right: 20, bottom: 0, left: 4 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
                 <XAxis dataKey="group" tick={{ fontSize: 11 }} />
-                <YAxis tick={{ fontSize: 12 }} width={36} unit="%" />
+                <YAxis
+                  tick={{ fontSize: 12 }}
+                  width={44}
+                  unit="%"
+                  label={{
+                    value: "% of posts held",
+                    angle: -90,
+                    position: "insideLeft",
+                    fontSize: 11,
+                    fill: "var(--color-text-muted)",
+                    style: { textAnchor: "middle" },
+                  }}
+                />
                 <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v}%`} />
                 <ReferenceLine y={yearRow.statutory_quotas.sc_pct} stroke={CATEGORY_COLOR.SC} strokeDasharray="3 3" />
                 <ReferenceLine y={yearRow.statutory_quotas.st_pct} stroke={CATEGORY_COLOR.ST} strokeDasharray="3 3" />

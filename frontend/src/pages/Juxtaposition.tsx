@@ -26,6 +26,8 @@ function MiniChart({
   data,
   missingNote,
   howToRead,
+  xLabel = "Year",
+  yLabel,
 }: {
   title: string;
   unit: string;
@@ -34,16 +36,34 @@ function MiniChart({
   data: Record<string, string | number | null>[];
   missingNote?: string;
   howToRead: ReactNode;
+  xLabel?: string;
+  yLabel: string;
 }) {
   return (
     <div className="card" style={{ marginBottom: 0 }}>
       <h2 style={{ fontSize: 14 }}>{title}</h2>
       <ChartHelp>{howToRead}</ChartHelp>
-      <ResponsiveContainer width="100%" height={180}>
-        <LineChart data={data} margin={{ top: 6, right: 10, bottom: 0, left: 0 }}>
+      <ResponsiveContainer width="100%" height={195}>
+        <LineChart data={data} margin={{ top: 6, right: 10, bottom: 16, left: 2 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-          <XAxis dataKey="x" tick={{ fontSize: 10.5 }} />
-          <YAxis tick={{ fontSize: 10.5 }} width={34} unit={unit} />
+          <XAxis
+            dataKey="x"
+            tick={{ fontSize: 10.5 }}
+            label={{ value: xLabel, position: "insideBottom", offset: -10, fontSize: 10, fill: "var(--color-text-muted)" }}
+          />
+          <YAxis
+            tick={{ fontSize: 10.5 }}
+            width={40}
+            unit={unit}
+            label={{
+              value: yLabel,
+              angle: -90,
+              position: "insideLeft",
+              fontSize: 9.5,
+              fill: "var(--color-text-muted)",
+              style: { textAnchor: "middle" },
+            }}
+          />
           <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} formatter={(v: number) => round2(v)} />
           {series.map((s) => (
             <Line key={s} type="monotone" dataKey={s} stroke={CATEGORY_COLOR[s]} strokeWidth={2} dot={{ r: 2.5 }} />
@@ -148,6 +168,7 @@ export function Juxtaposition() {
           data={crimeData}
           missingNote="OBC not shown: no OBC crime category exists (no Prevention of Atrocities Act equivalent) — a confirmed dead end, not an estimate."
           howToRead="Cases per 100,000 people in that group, not a raw case count — comparable across years despite population growth. Rising = more registered cases per capita, not necessarily more crime (see full page for the reporting caveat)."
+          yLabel="Rate per lakh"
         />
         <MiniChart
           title="Education gap to All-category GER (points)"
@@ -157,6 +178,7 @@ export function Juxtaposition() {
           data={educationData}
           missingNote="OBC not shown: AISHE does not publish an OBC GER series."
           howToRead="Percentage-point gap between the All-category enrolment ratio and this group's — lower means closer to parity, not lower enrolment."
+          yLabel="Gap to All (pts)"
         />
         <MiniChart
           title="Employment gap to quota, Group A (points)"
@@ -165,6 +187,7 @@ export function Juxtaposition() {
           series={["SC", "ST", "OBC"]}
           data={employmentData}
           howToRead="Percentage-point gap between the legal quota and actual Group A (senior) representation — lower means closer to meeting quota, 0 means exactly at quota."
+          yLabel="Gap to quota (pts)"
         />
         <MiniChart
           title="Lok Sabha seat share (%)"
@@ -174,6 +197,8 @@ export function Juxtaposition() {
           data={parliamentData}
           missingNote="OBC not shown: no OBC parliamentary reservation exists anywhere (only local bodies do) — a confirmed dead end, not an estimate."
           howToRead="% of all Lok Sabha seats reserved for this group. Changes only when constituencies are redrawn (delimitation), not year to year — each point is an era, not an annual reading."
+          xLabel="Era"
+          yLabel="% of seats"
         />
         <MiniChart
           title="MPCE gap from average, rural (%)"
@@ -182,6 +207,7 @@ export function Juxtaposition() {
           series={["SC", "ST", "OBC", "Others"]}
           data={incomeData}
           howToRead="% difference from the all-group average consumption spending, same year. 0% = exactly average; negative = below average; moving toward 0% is narrowing, not a rupee increase."
+          yLabel="% gap from avg"
         />
       </div>
 

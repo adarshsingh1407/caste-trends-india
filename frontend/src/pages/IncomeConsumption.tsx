@@ -18,10 +18,22 @@ function GapChart({ data, sector }: { data: MpceData; sector: "rural" | "urban" 
 
   return (
     <ResponsiveContainer width="100%" height={260}>
-      <LineChart data={chartData} margin={{ top: 10, right: 20, bottom: 0, left: 0 }}>
+      <LineChart data={chartData} margin={{ top: 10, right: 20, bottom: 0, left: 4 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
         <XAxis dataKey="year" tick={{ fontSize: 12 }} />
-        <YAxis tick={{ fontSize: 12 }} width={44} unit="%" />
+        <YAxis
+          tick={{ fontSize: 12 }}
+          width={52}
+          unit="%"
+          label={{
+            value: "% gap from average MPCE",
+            angle: -90,
+            position: "insideLeft",
+            fontSize: 11.5,
+            fill: "var(--color-text-muted)",
+            style: { textAnchor: "middle" },
+          }}
+        />
         <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v > 0 ? "+" : ""}${v}%`} />
         <Line type="monotone" dataKey="ST" stroke={CATEGORY_COLOR.ST} strokeWidth={2.5} dot={{ r: 3 }} />
         <Line type="monotone" dataKey="SC" stroke={CATEGORY_COLOR.SC} strokeWidth={2.5} dot={{ r: 3 }} />

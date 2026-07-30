@@ -50,11 +50,23 @@ export function Wealth() {
                   Rural: data.assets_2019_rs.rural[g].ava_rs,
                   Urban: data.assets_2019_rs.urban[g].ava_rs,
                 }))}
-                margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+                margin={{ top: 10, right: 20, bottom: 0, left: 4 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
                 <XAxis dataKey="group" tick={{ fontSize: 12 }} />
-                <YAxis tick={{ fontSize: 11 }} width={70} tickFormatter={(v) => `₹${(v / 100000).toFixed(0)}L`} />
+                <YAxis
+                  tick={{ fontSize: 11 }}
+                  width={78}
+                  tickFormatter={(v) => `₹${(v / 100000).toFixed(0)}L`}
+                  label={{
+                    value: "Average asset value (₹ lakhs)",
+                    angle: -90,
+                    position: "insideLeft",
+                    fontSize: 11.5,
+                    fill: "var(--color-text-muted)",
+                    style: { textAnchor: "middle" },
+                  }}
+                />
                 <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `₹${v.toLocaleString("en-IN")}`} />
                 <Bar dataKey="Rural" fill="var(--color-rural)" />
                 <Bar dataKey="Urban" fill="var(--color-urban)" />
@@ -117,11 +129,23 @@ export function Wealth() {
                     SC: academic.data!.wealth_concentration_gap.series.SC[i],
                     ST: academic.data!.wealth_concentration_gap.series.ST[i],
                   }))}
-                  margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+                  margin={{ top: 10, right: 20, bottom: 0, left: 4 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
                   <XAxis dataKey="year" tick={{ fontSize: 12.5 }} />
-                  <YAxis tick={{ fontSize: 12.5 }} width={44} unit="pp" />
+                  <YAxis
+                    tick={{ fontSize: 12.5 }}
+                    width={52}
+                    unit="pp"
+                    label={{
+                      value: "Gap from proportional wealth share (pp)",
+                      angle: -90,
+                      position: "insideLeft",
+                      fontSize: 10.5,
+                      fill: "var(--color-text-muted)",
+                      style: { textAnchor: "middle" },
+                    }}
+                  />
                   <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v > 0 ? "+" : ""}${v}pp`} />
                   <ReferenceLine y={0} stroke="var(--color-text-muted)" strokeDasharray="4 4" />
                   <Line type="monotone" dataKey="FC" stroke={CATEGORY_COLOR.General} strokeWidth={2.5} dot={{ r: 3 }} connectNulls={false} />
@@ -168,17 +192,33 @@ export function Wealth() {
             <div className="side-by-side">
               <div>
                 <h3 style={{ fontSize: 13, marginBottom: 6 }}>Incidence of Indebtedness (IOI %), rural</h3>
-                <ResponsiveContainer width="100%" height={200}>
+                <ResponsiveContainer width="100%" height={215}>
                   <LineChart
                     data={["2012_13", "2019"].map((year) => ({
                       year: year === "2012_13" ? "2012-13" : "2019",
                       ...Object.fromEntries(GROUPS.map((g) => [g, data.debt_by_year[year as "2012_13" | "2019"].rural[g].ioi_pct])),
                     }))}
-                    margin={{ top: 6, right: 10, bottom: 0, left: 0 }}
+                    margin={{ top: 6, right: 10, bottom: 16, left: 2 }}
                   >
                     <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                    <XAxis dataKey="year" tick={{ fontSize: 11 }} />
-                    <YAxis tick={{ fontSize: 11 }} width={32} unit="%" />
+                    <XAxis
+                      dataKey="year"
+                      tick={{ fontSize: 11 }}
+                      label={{ value: "Year", position: "insideBottom", offset: -10, fontSize: 10, fill: "var(--color-text-muted)" }}
+                    />
+                    <YAxis
+                      tick={{ fontSize: 11 }}
+                      width={40}
+                      unit="%"
+                      label={{
+                        value: "IOI (%)",
+                        angle: -90,
+                        position: "insideLeft",
+                        fontSize: 10,
+                        fill: "var(--color-text-muted)",
+                        style: { textAnchor: "middle" },
+                      }}
+                    />
                     <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} />
                     {GROUPS.map((g) => (
                       <Line key={g} type="monotone" dataKey={g} stroke={CATEGORY_COLOR[g]} strokeWidth={2} dot={{ r: 3 }} />
@@ -199,17 +239,33 @@ export function Wealth() {
               </div>
               <div>
                 <h3 style={{ fontSize: 13, marginBottom: 6 }}>Average Amount of Debt (AOD ₹), rural</h3>
-                <ResponsiveContainer width="100%" height={200}>
+                <ResponsiveContainer width="100%" height={215}>
                   <LineChart
                     data={["2012_13", "2019"].map((year) => ({
                       year: year === "2012_13" ? "2012-13" : "2019",
                       ...Object.fromEntries(GROUPS.map((g) => [g, data.debt_by_year[year as "2012_13" | "2019"].rural[g].aod_rs])),
                     }))}
-                    margin={{ top: 6, right: 10, bottom: 0, left: 0 }}
+                    margin={{ top: 6, right: 10, bottom: 16, left: 2 }}
                   >
                     <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                    <XAxis dataKey="year" tick={{ fontSize: 11 }} />
-                    <YAxis tick={{ fontSize: 11 }} width={44} tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`} />
+                    <XAxis
+                      dataKey="year"
+                      tick={{ fontSize: 11 }}
+                      label={{ value: "Year", position: "insideBottom", offset: -10, fontSize: 10, fill: "var(--color-text-muted)" }}
+                    />
+                    <YAxis
+                      tick={{ fontSize: 11 }}
+                      width={52}
+                      tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`}
+                      label={{
+                        value: "AOD (₹)",
+                        angle: -90,
+                        position: "insideLeft",
+                        fontSize: 10,
+                        fill: "var(--color-text-muted)",
+                        style: { textAnchor: "middle" },
+                      }}
+                    />
                     <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8 }} formatter={(v: number) => `₹${v.toLocaleString("en-IN")}`} />
                     {GROUPS.map((g) => (
                       <Line key={g} type="monotone" dataKey={g} stroke={CATEGORY_COLOR[g]} strokeWidth={2} dot={{ r: 3 }} />

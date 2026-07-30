@@ -106,10 +106,25 @@ export function CrimeTrends() {
 
         {chartData.length > 0 && (
           <ResponsiveContainer width="100%" height={340}>
-            <LineChart data={chartData} margin={{ top: 10, right: 20, bottom: 0, left: 0 }}>
+            <LineChart data={chartData} margin={{ top: 10, right: 20, bottom: 18, left: 4 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-              <XAxis dataKey="year" tick={{ fontSize: 12.5 }} />
-              <YAxis tick={{ fontSize: 12.5 }} width={50} />
+              <XAxis
+                dataKey="year"
+                tick={{ fontSize: 12.5 }}
+                label={{ value: "Year", position: "insideBottom", offset: -12, fontSize: 11.5, fill: "var(--color-text-muted)" }}
+              />
+              <YAxis
+                tick={{ fontSize: 12.5 }}
+                width={60}
+                label={{
+                  value: metric === "rate_per_lakh_population" ? "Rate per lakh population" : "Cases registered",
+                  angle: -90,
+                  position: "insideLeft",
+                  fontSize: 11.5,
+                  fill: "var(--color-text-muted)",
+                  style: { textAnchor: "middle" },
+                }}
+              />
               <Tooltip
                 contentStyle={{ fontSize: 13, borderRadius: 8 }}
                 formatter={(value: number) =>
@@ -173,11 +188,27 @@ export function CrimeTrends() {
                   "SC conviction rate": row.conviction_rate_pct,
                   "ST conviction rate": conviction.data!.st[i].conviction_rate_pct,
                 }))}
-                margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+                margin={{ top: 10, right: 20, bottom: 18, left: 4 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                <XAxis dataKey="year" tick={{ fontSize: 12.5 }} />
-                <YAxis tick={{ fontSize: 12.5 }} width={40} unit="%" />
+                <XAxis
+                  dataKey="year"
+                  tick={{ fontSize: 12.5 }}
+                  label={{ value: "Year", position: "insideBottom", offset: -12, fontSize: 11.5, fill: "var(--color-text-muted)" }}
+                />
+                <YAxis
+                  tick={{ fontSize: 12.5 }}
+                  width={48}
+                  unit="%"
+                  label={{
+                    value: "Conviction rate (%)",
+                    angle: -90,
+                    position: "insideLeft",
+                    fontSize: 11.5,
+                    fill: "var(--color-text-muted)",
+                    style: { textAnchor: "middle" },
+                  }}
+                />
                 <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v}%`} />
                 <Line type="monotone" dataKey="SC conviction rate" stroke={CATEGORY_COLOR.SC} strokeWidth={2.5} dot={{ r: 3 }} />
                 <Line type="monotone" dataKey="ST conviction rate" stroke={CATEGORY_COLOR.ST} strokeWidth={2.5} dot={{ r: 3 }} />

@@ -50,11 +50,23 @@ export function Parliament() {
                   SC: era.sc_pct_of_seats,
                   ST: era.st_pct_of_seats,
                 }))}
-                margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+                margin={{ top: 10, right: 20, bottom: 0, left: 4 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
                 <XAxis dataKey="era" tick={{ fontSize: 12 }} />
-                <YAxis tick={{ fontSize: 12 }} width={40} unit="%" />
+                <YAxis
+                  tick={{ fontSize: 12 }}
+                  width={48}
+                  unit="%"
+                  label={{
+                    value: "% of Lok Sabha seats",
+                    angle: -90,
+                    position: "insideLeft",
+                    fontSize: 11.5,
+                    fill: "var(--color-text-muted)",
+                    style: { textAnchor: "middle" },
+                  }}
+                />
                 <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v}%`} />
                 <Bar dataKey="SC" fill={CATEGORY_COLOR.SC} />
                 <Bar dataKey="ST" fill={CATEGORY_COLOR.ST} />
