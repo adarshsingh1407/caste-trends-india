@@ -49,7 +49,7 @@ export function OpinionSection(props: Props) {
       <div className="opinion-threads">
         <div className="opinion-thread" style={{ borderLeftColor: "var(--color-positive)" }}>
           <div className="opinion-thread-title" style={{ color: "var(--color-positive)" }}>
-            ▲ Representation is improving
+            ▲ 👍 Representation is improving
           </div>
           <div className="opinion-thread-stat">
             Education gap: {scGap2014.toFixed(1)}→{scGapNow.toFixed(1)} pts (SC), {stGap2014.toFixed(1)}→
@@ -58,7 +58,7 @@ export function OpinionSection(props: Props) {
         </div>
         <div className="opinion-thread" style={{ borderLeftColor: "var(--color-negative)" }}>
           <div className="opinion-thread-title" style={{ color: "var(--color-negative)" }}>
-            ▼ But it has a ceiling
+            ▼ 👎 But it has a ceiling
           </div>
           <div className="opinion-thread-stat">
             Senior (Group A) roles below quota every year checked ({scGroupAGapNow.toFixed(2)} pts SC,{" "}
@@ -67,7 +67,7 @@ export function OpinionSection(props: Props) {
         </div>
         <div className="opinion-thread" style={{ borderLeftColor: "var(--color-negative)" }}>
           <div className="opinion-thread-title" style={{ color: "var(--color-negative)" }}>
-            ▼ Wealth is the starkest gap
+            ▼ 👎 Wealth is the starkest gap
           </div>
           <div className="opinion-thread-stat">
             SC/ST hold only ~{scAssetPctOfOthers}%/{stAssetPctOfOthers}% of "Others'" asset value (2019 snapshot, no

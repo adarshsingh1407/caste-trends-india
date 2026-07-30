@@ -37,6 +37,7 @@ function TrackWidget({
   const [showInfo, setShowInfo] = useState(false);
   const verdictColor =
     tone === "positive" ? "var(--color-positive)" : tone === "negative" ? "var(--color-negative)" : "var(--color-text-muted)";
+  const verdictThumb = tone === "positive" ? "👍 " : tone === "negative" ? "👎 " : "";
   const manyValues = values.length > 2;
   return (
     <div className="track-widget">
@@ -82,7 +83,8 @@ function TrackWidget({
         </div>
       )}
       <div className="track-widget-verdict" style={{ color: verdictColor }}>
-        {direction === "up" ? "▲" : "▼"} {verdict}
+        {direction === "up" ? "▲" : "▼"} {verdictThumb}
+        {verdict}
       </div>
     </div>
   );
