@@ -1,7 +1,9 @@
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
+import { ChartHelp } from "../components/ChartHelp";
 import { CATEGORY_COLOR, Category } from "../constants/categoryColors";
 import {
   CrimeYearRow,
@@ -23,6 +25,7 @@ function MiniChart({
   series,
   data,
   missingNote,
+  howToRead,
 }: {
   title: string;
   unit: string;
@@ -30,10 +33,12 @@ function MiniChart({
   series: SeriesKey[];
   data: Record<string, string | number | null>[];
   missingNote?: string;
+  howToRead: ReactNode;
 }) {
   return (
     <div className="card" style={{ marginBottom: 0 }}>
       <h2 style={{ fontSize: 14 }}>{title}</h2>
+      <ChartHelp>{howToRead}</ChartHelp>
       <ResponsiveContainer width="100%" height={180}>
         <LineChart data={data} margin={{ top: 6, right: 10, bottom: 0, left: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
@@ -142,6 +147,7 @@ export function Juxtaposition() {
           series={["SC", "ST"]}
           data={crimeData}
           missingNote="OBC not shown: no OBC crime category exists (no Prevention of Atrocities Act equivalent) — a confirmed dead end, not an estimate."
+          howToRead="Cases per 100,000 people in that group, not a raw case count — comparable across years despite population growth. Rising = more registered cases per capita, not necessarily more crime (see full page for the reporting caveat)."
         />
         <MiniChart
           title="Education gap to All-category GER (points)"
@@ -150,6 +156,7 @@ export function Juxtaposition() {
           series={["SC", "ST"]}
           data={educationData}
           missingNote="OBC not shown: AISHE does not publish an OBC GER series."
+          howToRead="Percentage-point gap between the All-category enrolment ratio and this group's — lower means closer to parity, not lower enrolment."
         />
         <MiniChart
           title="Employment gap to quota, Group A (points)"
@@ -157,6 +164,7 @@ export function Juxtaposition() {
           linkTo="/representation"
           series={["SC", "ST", "OBC"]}
           data={employmentData}
+          howToRead="Percentage-point gap between the legal quota and actual Group A (senior) representation — lower means closer to meeting quota, 0 means exactly at quota."
         />
         <MiniChart
           title="Lok Sabha seat share (%)"
@@ -165,6 +173,7 @@ export function Juxtaposition() {
           series={["SC", "ST"]}
           data={parliamentData}
           missingNote="OBC not shown: no OBC parliamentary reservation exists anywhere (only local bodies do) — a confirmed dead end, not an estimate."
+          howToRead="% of all Lok Sabha seats reserved for this group. Changes only when constituencies are redrawn (delimitation), not year to year — each point is an era, not an annual reading."
         />
         <MiniChart
           title="MPCE gap from average, rural (%)"
@@ -172,6 +181,7 @@ export function Juxtaposition() {
           linkTo="/income"
           series={["SC", "ST", "OBC", "Others"]}
           data={incomeData}
+          howToRead="% difference from the all-group average consumption spending, same year. 0% = exactly average; negative = below average; moving toward 0% is narrowing, not a rupee increase."
         />
       </div>
 

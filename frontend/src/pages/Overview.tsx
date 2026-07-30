@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import { useJsonData } from "../hooks/useJsonData";
 import { OpinionSection } from "../components/OpinionSection";
@@ -24,6 +24,7 @@ function TrackWidget({
   direction,
   tone,
   verdict,
+  howToRead,
 }: {
   label: string;
   linkTo: string;
@@ -31,15 +32,32 @@ function TrackWidget({
   direction: Direction;
   tone: Tone;
   verdict: ReactNode;
+  howToRead: ReactNode;
 }) {
+  const [showInfo, setShowInfo] = useState(false);
   const verdictColor =
     tone === "positive" ? "var(--color-positive)" : tone === "negative" ? "var(--color-negative)" : "var(--color-text-muted)";
   const manyValues = values.length > 2;
   return (
     <div className="track-widget">
-      <Link to={linkTo} className="track-widget-title">
-        {label}
-      </Link>
+      <div className="track-widget-header">
+        <Link to={linkTo} className="track-widget-title">
+          {label}
+        </Link>
+        <button
+          type="button"
+          className="track-widget-info"
+          onClick={(e) => {
+            e.preventDefault();
+            setShowInfo((o) => !o);
+          }}
+          aria-expanded={showInfo}
+          aria-label="How to read this"
+        >
+          ⓘ
+        </button>
+      </div>
+      {showInfo && <div className="chart-help-body" style={{ marginBottom: 8 }}>{howToRead}</div>}
       {manyValues ? (
         <div className="track-widget-rows">
           {values.map((v) => (
@@ -212,6 +230,12 @@ export function Overview() {
                 +{scRateDelta?.toFixed(0)}% / +{stRateDelta?.toFixed(0)}% since 2017
               </>
             }
+            howToRead={
+              <>
+                Cases registered per 100,000 people in that group — not a raw case count — so it's comparable across
+                years even as population grows. The % below compares the latest year to 2017.
+              </>
+            }
           />
         )}
         {attitudes.data && (
@@ -232,6 +256,12 @@ export function Overview() {
                 Brahmins and Forward castes (Kshatriya/Vaishya, reported separately — not summable) report the{" "}
                 <em>highest</em> rates — this measures who admits discriminating, not who's discriminated against.
                 2011-12 snapshot only — no trend.
+              </>
+            }
+            howToRead={
+              <>
+                Each row is a different social group's own admission rate (%) from a single 2011-12 survey — not a
+                trend over time, and the rows aren't stacked or summable into one combined number.
               </>
             }
           />
@@ -256,6 +286,13 @@ export function Overview() {
                 since 2014-15
               </>
             }
+            howToRead={
+              <>
+                GER = enrolled students as a % of the age group that should be enrolled (18–23) — it can exceed 100%
+                if older or repeat students are counted. "Gap" is the All-category GER minus this group's GER; a
+                shrinking gap means this group is catching up, even while both numbers rise.
+              </>
+            }
           />
         )}
         {doptLatest && (
@@ -276,6 +313,13 @@ export function Overview() {
                 →{stGroupAGapNow?.toFixed(2)} pts since 2016 — still below quota every year
               </>
             }
+            howToRead={
+              <>
+                % of senior (Group A) central government posts held by each group, versus that group's legal quota
+                (shown next to each %). Below quota means under-represented in senior roles relative to the legal
+                target — "gap to quota" tracks how far below.
+              </>
+            }
           />
         )}
         {eraLast && (
@@ -292,6 +336,12 @@ export function Overview() {
               <>
                 {eraFirst?.sc_pct_of_seats}%→{eraLast.sc_pct_of_seats}% / {eraFirst?.st_pct_of_seats}%→
                 {eraLast.st_pct_of_seats}% — structural, not annual
+              </>
+            }
+            howToRead={
+              <>
+                % of all Lok Sabha seats reserved for this group. This only changes when constituencies are redrawn
+                (delimitation) — the change shown spans decades, not year-to-year movement.
               </>
             }
           />
@@ -317,6 +367,13 @@ export function Overview() {
             direction="up"
             tone="positive"
             verdict={<>Narrowing since {incomeFirstYear} — 11-yr survey gap, read as directional</>}
+            howToRead={
+              <>
+                % difference between this group's average monthly spending per person and the all-group average, same
+                survey year. Negative means below average; moving toward 0% means the gap is narrowing, not that
+                spending is falling.
+              </>
+            }
           />
         )}
         {scAssetPctOfOthers !== null && stAssetPctOfOthers !== null && (
@@ -334,6 +391,13 @@ export function Overview() {
               <>
                 Reads as: SC household assets are worth only {scAssetPctOfOthers}% of the average "Others" household's
                 — the starkest gap of any track here. 2019 snapshot only, no trend.
+              </>
+            }
+            howToRead={
+              <>
+                This group's average household asset value (land, buildings, gold, etc. — not income) as a % of the
+                average "Others" household's asset value, from a single 2019 survey. 100% would mean equal wealth;
+                lower means a bigger gap.
               </>
             }
           />

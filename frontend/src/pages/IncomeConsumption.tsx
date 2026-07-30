@@ -1,6 +1,7 @@
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis, Legend } from "recharts";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
+import { ChartHelp } from "../components/ChartHelp";
 import { CATEGORY_COLOR } from "../constants/categoryColors";
 import { MpceData } from "../types/data";
 
@@ -60,6 +61,13 @@ export function IncomeConsumption() {
 
           <div className="card">
             <h2>Gap from average MPCE, rural</h2>
+            <ChartHelp>
+              <p>
+                Line chart — each line is one group's % difference from the all-group average, same year, same
+                sector. 0% would mean spending exactly at the average; negative means below average. A line moving
+                toward 0% is narrowing the gap, not necessarily rising in absolute rupee terms.
+              </p>
+            </ChartHelp>
             <p className="card-note">
               Each group's average MPCE as a % difference from the all-social-groups average, same year, same
               sector. Negative = below average.
@@ -79,6 +87,13 @@ export function IncomeConsumption() {
 
           <div className="card">
             <h2>Gap from average MPCE, urban</h2>
+            <ChartHelp>
+              <p>
+                Same measure as the rural chart above — % difference from the all-group average, urban sector this
+                time. 0% is average; a line closer to 0% is a smaller gap, regardless of which direction it started
+                from.
+              </p>
+            </ChartHelp>
             <p className="card-note">
               Same measure, urban sector. Note SC has historically been the <em>most</em> below-average group in
               urban areas — more so than ST — the reverse of the rural pattern.
@@ -98,6 +113,13 @@ export function IncomeConsumption() {
 
           <div className="card">
             <h2>Average MPCE in rupees, latest survey (2022-23)</h2>
+            <ChartHelp>
+              <p>
+                Actual rupee amounts (not %), for the latest survey only, split rural/urban. Compare each row directly
+                against the "All groups" row to see the absolute gap in rupees — the two charts above show this same
+                gap as a %, over time.
+              </p>
+            </ChartHelp>
             <p className="card-note">{data.absolute_mpce_rs.note}</p>
             <div className="table-scroll">
             <table className="data-table">

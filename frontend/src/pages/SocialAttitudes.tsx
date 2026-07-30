@@ -2,6 +2,7 @@ import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxi
 import { Link } from "react-router-dom";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
+import { ChartHelp } from "../components/ChartHelp";
 import { UntouchabilityData } from "../types/data";
 
 const GROUP_COLOR: Record<string, string> = {
@@ -38,6 +39,14 @@ export function SocialAttitudes() {
 
           <div className="card">
             <h2>Who admits to practicing untouchability?</h2>
+            <ChartHelp>
+              <p>
+                Bar chart — one bar per social group, height = % of households in that group who admitted (in a
+                2011-12 survey) that they still practice untouchability. This measures who admits to discriminating,
+                not who experiences discrimination. Bars are each a separate group's self-report and aren't summable
+                into one combined "total affected" figure.
+              </p>
+            </ChartHelp>
             <p className="card-note">
               "{data.table1_practice_by_social_group.question}" — {data.table1_practice_by_social_group.note}
             </p>
@@ -85,6 +94,14 @@ export function SocialAttitudes() {
 
           <div className="card">
             <h2>A more specific question: SC entering the kitchen</h2>
+            <ChartHelp>
+              <p>
+                Same bar-chart format as above, but a narrower, concrete question ("would you let an SC person prepare
+                food in your kitchen") instead of the abstract "do you practice untouchability." Concrete questions
+                like this typically get lower self-admission rates across every group — that's an expected pattern in
+                social-attitude surveys, not a data error.
+              </p>
+            </ChartHelp>
             <p className="card-note">"{data.table2_specific_practice.question}" — {data.table2_specific_practice.note}</p>
             <ResponsiveContainer width="100%" height={260}>
               <BarChart
@@ -122,6 +139,13 @@ export function SocialAttitudes() {
 
           <div className="card">
             <h2>Rural vs. urban, and by income</h2>
+            <ChartHelp>
+              <p>
+                Each tile is a single %, not a chart — the share of households in that subgroup (rural/urban, or
+                income quintile) admitting the same untouchability practice from the first table above, sliced a
+                different way instead of by caste group.
+              </p>
+            </ChartHelp>
             <div className="stat-grid">
               <div className="stat-tile">
                 <div className="label">Rural</div>
@@ -147,6 +171,13 @@ export function SocialAttitudes() {
 
           <div className="card">
             <h2>Regional variation</h2>
+            <ChartHelp>
+              <p>
+                Same self-admission %, this time split by region instead of caste group or income. Compare a region's
+                tile against the national figures in the first table — this doesn't identify which castes within a
+                region are responsible.
+              </p>
+            </ChartHelp>
             <p className="card-note">{data.regional.note}</p>
             <div className="stat-grid">
               <div className="stat-tile">

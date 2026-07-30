@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
+import { ChartHelp } from "../components/ChartHelp";
 import { CATEGORY_COLOR } from "../constants/categoryColors";
 import { AisheData, DoptYearRow } from "../types/data";
 
@@ -45,6 +46,15 @@ export function Representation() {
 
       <div className="card">
         <h2>Higher education — Gross Enrolment Ratio (AISHE)</h2>
+        <ChartHelp>
+          <p>
+            Line chart — "All categories", SC, and ST enrolment ratios over years. GER can exceed 100% since it
+            counts anyone enrolled in that age bracket's courses, including older or repeat students, against the
+            official 18–23 population estimate. The gap between the "All" line and the SC/ST lines is what matters
+            most: a narrowing gap means SC/ST enrolment is catching up to the national average, even while all three
+            lines rise together.
+          </p>
+        </ChartHelp>
         <p className="card-note">
           Age 18–23, based on 2011 Census population projection. No OBC GER series is published by AISHE — only
           All/SC/ST.
@@ -97,6 +107,14 @@ export function Representation() {
             })()}
 
             <h2 style={{ marginTop: 24 }}>Enrollment share, {aishe.data.enrollment_share_latest.year}</h2>
+            <ChartHelp>
+              <p>
+                Each tile is this group's share (%) of all students enrolled nationally, with its share of the total
+                population shown just below it for comparison (not shown for OBC — see note below the tiles). If a
+                group's enrollment share is below its population share, that group is under-represented among
+                students relative to its size in the country.
+              </p>
+            </ChartHelp>
             <p className="card-note">
               Out of {aishe.data.enrollment_share_latest.total_enrollment_crore} crore total students. General/Other
               is shown for visual scale — it's a derived residual (not stated directly by AISHE) and includes
@@ -147,6 +165,15 @@ export function Representation() {
 
       <div className="card">
         <h2>Central government employment (DoPT)</h2>
+        <ChartHelp>
+          <p>
+            Bar chart per year: height = % of posts in that job grade (Group A/B/C) held by each group. The dashed
+            lines mark the legal quota for SC/ST/OBC; the fainter dotted lines mark SC/ST's share of India's
+            population that year. A bar above its dashed line means that group is meeting or exceeding quota in that
+            grade — compare Group A (senior) against Group C (junior) across the charts to see the "tapering"
+            pattern described below them.
+          </p>
+        </ChartHelp>
         <p className="card-note">
           Group A/B/C representation vs. statutory quota (SC 15%, ST 7.5%, OBC 27%), by year. The Safai Karamchari
           sub-category within Group C is kept separate — folding it in would hide how concentrated its SC share is.

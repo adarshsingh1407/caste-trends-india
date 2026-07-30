@@ -1,6 +1,7 @@
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
+import { ChartHelp } from "../components/ChartHelp";
 import { CATEGORY_COLOR } from "../constants/categoryColors";
 import { AidisData } from "../types/data";
 
@@ -32,6 +33,14 @@ export function Wealth() {
 
           <div className="card">
             <h2>Average Value of Assets (AVA) per household, 2019</h2>
+            <ChartHelp>
+              <p>
+                Bar chart, rupees (in lakhs — 1 lakh = 100,000) on the vertical axis. This is the average value of
+                everything a household in that group owns (land, buildings, gold, etc.), not their income or
+                spending. A single 2019 snapshot — there's no earlier comparable AIDIS round in this pipeline, so no
+                trend line is possible.
+              </p>
+            </ChartHelp>
             <p className="card-note">{data.assets_2019_rs.note}</p>
             <ResponsiveContainer width="100%" height={280}>
               <BarChart
@@ -74,6 +83,15 @@ export function Wealth() {
 
           <div className="card">
             <h2>Indebtedness: 2012-13 vs. 2019</h2>
+            <ChartHelp>
+              <p>
+                Two line charts. <strong>IOI</strong> (Incidence of Indebtedness) is the % of households in that group
+                carrying any debt at all. <strong>AOD</strong> (Average Amount of Debt) is the average rupees owed
+                among only the indebted households. Neither direction is inherently good or bad on its own — read
+                both together with the assets chart above (the caveat banner below explains why low debt isn't
+                necessarily good news).
+              </p>
+            </ChartHelp>
             <p className="card-note">{data.debt_by_year.note}</p>
             <div className="side-by-side">
               <div>
@@ -158,6 +176,13 @@ export function Wealth() {
 
           <div className="card">
             <h2>Debt-to-Asset Ratio, 2019</h2>
+            <ChartHelp>
+              <p>
+                Total debt as a % of total asset value, for each group — combining the debt and assets numbers above
+                into one ratio. Higher means more leveraged relative to what a household owns, not necessarily more
+                debt in absolute rupees.
+              </p>
+            </ChartHelp>
             <p className="card-note">{data.debt_asset_ratio_2019_pct.note}</p>
             <div className="table-scroll">
             <table className="data-table">

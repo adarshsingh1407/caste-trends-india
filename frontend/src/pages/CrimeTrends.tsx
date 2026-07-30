@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
+import { ChartHelp } from "../components/ChartHelp";
 import { CATEGORY_COLOR } from "../constants/categoryColors";
 import { CrimeYearRow, ConvictionDisposalData } from "../types/data";
 
@@ -70,6 +71,19 @@ export function CrimeTrends() {
 
       <div className="card">
         <h2>National totals by year</h2>
+        <ChartHelp>
+          <p>
+            Line chart, one line per group (SC, ST), years along the bottom. <strong>Raw cases</strong> is the actual
+            count of registered cases each year — bigger just means more cases were filed, not a bigger population.{" "}
+            <strong>Rate per lakh population</strong> divides that count by each group's population (per 100,000
+            people), so you can compare SC to ST fairly despite their very different sizes, and compare across years
+            even as population grows.
+          </p>
+          <p>
+            A rising line means more cases (or a higher rate) were <em>registered</em> — not necessarily that more
+            crime occurred (see the caveat above).
+          </p>
+        </ChartHelp>
         <p className="card-note">
           Raw counts favor states/years with larger populations. Rate per lakh normalizes by SC/ST population
           (post-2011 years use a projected population — see About this data).
@@ -135,6 +149,14 @@ export function CrimeTrends() {
 
       <div className="card">
         <h2>Conviction rate &amp; case backlog, 2018–2022</h2>
+        <ChartHelp>
+          <p>
+            Line chart, % on the vertical axis. <strong>Conviction rate</strong> is the share of decided cases ending
+            in conviction, not the number of cases. A rising line is generally good news — but read it with the
+            backlog note below: a rising conviction rate can still coexist with a growing pile of unresolved cases if
+            new cases arrive faster than courts close them.
+          </p>
+        </ChartHelp>
         <p className="card-note">
           A separate official compilation (Rajya Sabha reply, MHA, July 2024) from the crime totals above — see
           About this data. Shows whether registered cases actually result in conviction, not just how many are
@@ -212,6 +234,13 @@ export function CrimeTrends() {
       {data && (
         <div className="card">
           <h2>Full data</h2>
+          <ChartHelp>
+            <p>
+              Same numbers as the chart above, one row per year, for checking exact values.{" "}
+              <strong>Population basis</strong> flags which years use the actual Census count vs. a projected
+              estimate (see Data Sources) — this affects the "rate per lakh" column but not raw cases.
+            </p>
+          </ChartHelp>
           <div className="table-scroll">
           <table className="data-table">
             <thead>

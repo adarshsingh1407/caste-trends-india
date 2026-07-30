@@ -1,6 +1,7 @@
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
+import { ChartHelp } from "../components/ChartHelp";
 import { CATEGORY_COLOR } from "../constants/categoryColors";
 import { LokSabhaData } from "../types/data";
 
@@ -29,6 +30,14 @@ export function Parliament() {
         <>
           <div className="card">
             <h2>Reserved seats by delimitation era</h2>
+            <ChartHelp>
+              <p>
+                Bar chart, one bar pair (SC, ST) per delimitation era — a period during which seat allocation stayed
+                fixed. Height = reserved seats as a % of all 543 Lok Sabha seats. This changes only when
+                constituencies are redrawn nationally (last: 2008), not year to year, so don't expect movement
+                between elections within the same era.
+              </p>
+            </ChartHelp>
             <p className="card-note">
               Total Lok Sabha strength has been frozen at 543 since 1977. Only the SC/ST reserved-seat allocation
               among states changed at the 2008 delimitation, based on the 2001 Census — frozen again until after the
