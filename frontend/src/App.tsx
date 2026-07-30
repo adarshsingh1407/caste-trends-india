@@ -11,7 +11,6 @@ import { Unemployment } from "./pages/Unemployment";
 import { Wealth } from "./pages/Wealth";
 import { DataSources } from "./pages/DataSources";
 import { SocialAttitudes } from "./pages/SocialAttitudes";
-import { Juxtaposition } from "./pages/Juxtaposition";
 
 export default function App() {
   return (
@@ -29,7 +28,6 @@ export default function App() {
             <Route path="unemployment" element={<Unemployment />} />
             <Route path="wealth" element={<Wealth />} />
             <Route path="data-sources" element={<DataSources />} />
-            <Route path="juxtaposition" element={<Juxtaposition />} />
           </Route>
         </Routes>
       </AboutProvider>

@@ -6,8 +6,8 @@ type Tone = "positive" | "negative" | "neutral";
  * Small compact verdict caption for a single chart. `direction` always reflects the
  * literal numeric direction of the underlying metric (arrow never contradicts the number);
  * `tone` is a separate judgment of whether that direction is favorable, unfavorable, or
- * neither -- pass "neutral" for purely descriptive contexts (e.g. Juxtaposition, where the
- * page's whole point is to avoid implying a value judgment).
+ * neither -- pass "neutral" for purely descriptive contexts where the point is to avoid
+ * implying a value judgment (e.g. a side-by-side comparison across differently-scaled tracks).
  */
 export function GraphVerdict({
   direction,

@@ -37,7 +37,6 @@ const NAV_STRUCTURE: NavEntry[] = [
       { to: "/unemployment", label: "Unemployment" },
     ],
   },
-  { type: "link", to: "/juxtaposition", label: "Juxtaposition" },
 ];
 
 export function Layout() {

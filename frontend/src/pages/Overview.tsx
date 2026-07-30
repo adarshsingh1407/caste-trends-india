@@ -12,6 +12,7 @@ import {
   MpceData,
   AidisData,
   UntouchabilityData,
+  PlfsUnemploymentData,
 } from "../types/data";
 
 type Tone = "positive" | "negative" | "neutral";
@@ -107,6 +108,7 @@ export function Overview() {
   const parliament = useJsonData<LokSabhaData>("data/parliament/lok_sabha_reserved_seats.json");
   const income = useJsonData<MpceData>("data/consumption/mpce_by_social_group.json");
   const wealth = useJsonData<AidisData>("data/wealth/aidis.json");
+  const unemployment = useJsonData<PlfsUnemploymentData>("data/employment/plfs_unemployment.json");
 
   // --- Crime ---
   const latestCrimeYear = crime.data ? Math.max(...crime.data.map((r) => r.year)) : null;
@@ -175,6 +177,10 @@ export function Overview() {
     ? Math.round((wealth.data.assets_2019_rs.rural.OBC.ava_rs / wealth.data.assets_2019_rs.rural.Others.ava_rs) * 100)
     : null;
 
+  // --- Unemployment (PLFS) ---
+  const urFirst = unemployment.data?.years[0];
+  const urLast = unemployment.data ? unemployment.data.years[unemployment.data.years.length - 1] : null;
+
   const opinionReady =
     latestCrimeYear !== null &&
     scRateDelta !== null &&
@@ -195,10 +201,9 @@ export function Overview() {
     <div>
       <h1 className="page-title">National Overview</h1>
       <p className="page-subtitle">
-        Seven tracks across three axes for SC/ST (and OBC where data allows) — protection, representation, and
-        financial strength, never combined into one score. See <Link to="/juxtaposition">Juxtaposition</Link> for
-        all of them side by side, or <Link to="/data-sources">Data Sources</Link> for what's measured, computed, or
-        estimated.
+        Eight tracks across three axes for SC/ST (and OBC where data allows) — protection, representation, and
+        financial strength, never combined into one score. See <Link to="/data-sources">Data Sources</Link> for
+        what's measured, computed, or estimated.
       </p>
 
       {opinionReady && (
@@ -405,6 +410,33 @@ export function Overview() {
                 This group's average household asset value (land, buildings, gold, etc. — not income) as a % of the
                 average "Others" household's asset value, from a single 2019 survey. 100% would mean equal wealth;
                 lower means a bigger gap.
+              </>
+            }
+          />
+        )}
+        {urFirst && urLast && (
+          <TrackWidget
+            label="Unemployment rate (PLFS)"
+            linkTo="/unemployment"
+            values={[
+              { value: `${urLast.ur_pct.ST}%`, sub: "ST", color: CATEGORY_COLOR.ST },
+              { value: `${urLast.ur_pct.SC}%`, sub: "SC", color: CATEGORY_COLOR.SC },
+              { value: `${urLast.ur_pct.OBC}%`, sub: "OBC", color: CATEGORY_COLOR.OBC },
+              { value: `${urLast.ur_pct.Others}%`, sub: "Others", color: CATEGORY_COLOR.Others },
+            ]}
+            direction="down"
+            tone="positive"
+            verdict={
+              <>
+                Fell across every group, {urFirst.year}–{urLast.year}: ST {urFirst.ur_pct.ST}%→{urLast.ur_pct.ST}%,
+                SC {urFirst.ur_pct.SC}%→{urLast.ur_pct.SC}% — but see the page for why ST's low rate isn't
+                straightforwardly good news
+              </>
+            }
+            howToRead={
+              <>
+                % of each group's labour force that's unemployed (usual status), national. ST's rate looks best here
+                but is likely a measurement artefact, not an advantage — see the Unemployment page for why.
               </>
             }
           />
