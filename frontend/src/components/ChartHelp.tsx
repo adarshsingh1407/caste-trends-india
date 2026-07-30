@@ -1,15 +1,21 @@
 import { ReactNode, useState } from "react";
 
-/** Collapsible "how to read this" note, placed under a chart/widget title. Closed by default. */
+/** Icon-only "how to read this" toggle, pinned to the top-right corner of the enclosing .card. Closed by default. */
 export function ChartHelp({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="chart-help">
-      <button type="button" className="chart-help-toggle" onClick={() => setOpen((o) => !o)} aria-expanded={open}>
-        <span aria-hidden="true">ⓘ</span> How to read this
+    <>
+      <button
+        type="button"
+        className="card-info-toggle"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-label="How to read this"
+      >
+        ⓘ
       </button>
       {open && <div className="chart-help-body">{children}</div>}
-    </div>
+    </>
   );
 }
