@@ -1,4 +1,5 @@
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Link } from "react-router-dom";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
 import { ChartHelp } from "../components/ChartHelp";
@@ -96,6 +97,55 @@ export function Wealth() {
               <strong>Is this gap narrowing, and how fast?</strong> This dashboard's own AIDIS data is a single 2019
               snapshot, so it can't say — see the multi-round academic trend below instead.
             </p>
+          </div>
+
+          <div className="card">
+            <h2>Does where each group lives explain the gap?</h2>
+            <ChartHelp>
+              <p>
+                Same question asked on the <Link to="/unemployment">Unemployment</Link> page, using the same 2017-18
+                table: where does each social group actually live, rural or urban? Urban household assets are higher
+                than rural ones for every group above, and Others/General are far more urban-concentrated than
+                ST/SC/OBC — so it's worth checking whether that alone accounts for Others' higher wealth.
+              </p>
+            </ChartHelp>
+            <p className="card-note">{data.population_by_sector.note}</p>
+            <div className="table-scroll">
+              <table className="data-table" style={{ marginBottom: 16 }}>
+                <thead>
+                  <tr>
+                    <th>Social group</th>
+                    <th>Rural</th>
+                    <th>Urban</th>
+                    <th>National</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {GROUPS.map((g) => (
+                    <tr key={g}>
+                      <td>{g}</td>
+                      <td>{data.population_by_sector.rural_pct[g]}%</td>
+                      <td>{data.population_by_sector.urban_pct[g]}%</td>
+                      <td>{data.population_by_sector.national_pct[g]}%</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {(() => {
+              const scRuralRatio = Math.round((data.assets_2019_rs.rural.SC.ava_rs / data.assets_2019_rs.rural.Others.ava_rs) * 100);
+              const scUrbanRatio = Math.round((data.assets_2019_rs.urban.SC.ava_rs / data.assets_2019_rs.urban.Others.ava_rs) * 100);
+              return (
+                <p className="card-note">
+                  <strong>Mostly no, unlike unemployment.</strong> Others are indeed far more urban (40% of urban
+                  India vs. 28% nationally) than ST/SC/OBC, and urban assets are higher than rural ones across the
+                  board — but SC's asset value is about the same fraction of "Others"' in both sectors (~{scRuralRatio}%
+                  rural, ~{scUrbanRatio}% urban). Since the gap holds up within rural and within urban separately, not
+                  just in the national blended figure, it isn't primarily a rural/urban composition effect — unlike
+                  the Unemployment page, where population composition explains a real part of the ST/Others gap.
+                </p>
+              );
+            })()}
           </div>
 
           {academic.data && (

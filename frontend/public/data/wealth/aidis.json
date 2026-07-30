@@ -180,5 +180,32 @@
       "Others": 3.7,
       "all": 4.4
     }
+  },
+  "population_by_sector": {
+    "note": "Percentage distribution of persons by social group, rural vs. urban vs. national, a single 2017-18 snapshot -- not a trend. Used as shared context on both the Unemployment page (unemployment runs structurally higher in urban areas for every group, and Others/General are far more urban-concentrated than ST/SC/OBC) and the Wealth page (urban asset values are higher than rural ones for every group too).",
+    "source": {
+      "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2017-18",
+      "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
+      "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/Annual%20Report,%20PLFS%202017-18_31052019.pdf",
+      "table_location": "Statement 40 (p. 44 of the report, PDF p. 129), Section 3.9.1"
+    },
+    "rural_pct": {
+      "ST": 11.7,
+      "SC": 21.6,
+      "OBC": 43.5,
+      "Others": 23.2
+    },
+    "urban_pct": {
+      "ST": 3.6,
+      "SC": 14.9,
+      "OBC": 41.2,
+      "Others": 40.3
+    },
+    "national_pct": {
+      "ST": 9.3,
+      "SC": 19.6,
+      "OBC": 42.8,
+      "Others": 28.2
+    }
   }
 }

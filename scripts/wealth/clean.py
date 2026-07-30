@@ -14,17 +14,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RAW_DIR = ROOT / "data" / "raw" / "wealth"
+POPULATION_BY_SECTOR_FILE = ROOT / "data" / "reference" / "population_by_sector_2017_18.json"
 OUTPUT_FILE = ROOT / "frontend" / "public" / "data" / "wealth" / "aidis.json"
 
 
 def main() -> None:
     raw = json.loads((RAW_DIR / "aidis_transcribed.json").read_text())
+    population_by_sector = json.loads(POPULATION_BY_SECTOR_FILE.read_text())
     output = {
         "scope_note": raw["scope_note"],
         "sources": raw["sources"],
         "assets_2019_rs": raw["assets_2019_rs"],
         "debt_by_year": raw["debt_by_year"],
         "debt_asset_ratio_2019_pct": raw["debt_asset_ratio_2019_pct"],
+        "population_by_sector": population_by_sector,
     }
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)

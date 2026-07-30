@@ -1,3 +1,13 @@
+/** Shared across the Unemployment and Wealth pages -- same underlying PLFS 2017-18 table (Statement 40),
+ * not re-transcribed per topic. See data/reference/population_by_sector_2017_18.json. */
+export interface PopulationBySector {
+  note: string;
+  source: { report: string; publisher: string; url: string; table_location: string };
+  rural_pct: { ST: number; SC: number; OBC: number; Others: number };
+  urban_pct: { ST: number; SC: number; OBC: number; Others: number };
+  national_pct: { ST: number; SC: number; OBC: number; Others: number };
+}
+
 export type CrimeCategory = "SC" | "ST";
 
 export interface CrimeYearRow {
@@ -157,6 +167,7 @@ export interface AidisData {
     rural: { ST: number; SC: number; OBC: number; Others: number; all: number };
     urban: { ST: number; SC: number; OBC: number; Others: number; all: number };
   };
+  population_by_sector: PopulationBySector;
 }
 
 export interface AcademicWealthConcentrationData {
@@ -277,13 +288,7 @@ export interface PlfsUnemploymentData {
   scope_note: string;
   methodology_note: string;
   data_integrity_note: string;
-  population_by_sector: {
-    note: string;
-    source: { report: string; publisher: string; url: string; table_location: string };
-    rural_pct: { ST: number; SC: number; OBC: number; Others: number };
-    urban_pct: { ST: number; SC: number; OBC: number; Others: number };
-    national_pct: { ST: number; SC: number; OBC: number; Others: number };
-  };
+  population_by_sector: PopulationBySector;
   lfpr_wpr_2023_24: {
     note: string;
     source: { report: string; publisher: string; url: string; table_location: string };
