@@ -1,15 +1,15 @@
-import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { Link } from "react-router-dom";
+import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
 import { ChartHelp } from "../components/ChartHelp";
 import { CATEGORY_COLOR } from "../constants/categoryColors";
-import { AidisData } from "../types/data";
+import { AcademicWealthConcentrationData, AidisData } from "../types/data";
 
 const GROUPS = ["ST", "SC", "OBC", "Others"] as const;
 
 export function Wealth() {
   const { data, loading, error } = useJsonData<AidisData>("data/wealth/aidis.json");
+  const academic = useJsonData<AcademicWealthConcentrationData>("data/wealth/academic_wealth_concentration.json");
 
   return (
     <div>
@@ -82,13 +82,76 @@ export function Wealth() {
             </p>
             <p className="card-note">
               <strong>Is this gap narrowing, and how fast?</strong> This dashboard's own AIDIS data is a single 2019
-              snapshot, so it can't say. But academic research that does track multiple AIDIS rounds finds no clean
-              convergence to extrapolate a timeline from — one 2023 study (India/US comparison) concludes "no
-              convergence in sight"; another (1961–2012) finds forward castes' wealth growing <em>faster</em> than
-              lower castes', not slower. See <Link to="/data-sources">Data Sources</Link> for the studies and exact
-              numbers.
+              snapshot, so it can't say — see the multi-round academic trend below instead.
             </p>
           </div>
+
+          {academic.data && (
+            <div className="card">
+              <h2>Wealth concentration over time, by caste</h2>
+              <ChartHelp>
+                <p>
+                  Line chart. Each line is one group's share of India's total household wealth, minus its share of
+                  India's total population, in percentage points. Zero (the dashed reference line) would mean that
+                  group holds exactly its "fair share" of total wealth relative to its population size. A line moving{" "}
+                  <em>further</em> from zero means wealth concentration is worsening for that group; moving{" "}
+                  <em>toward</em> zero means it's improving. FC (Forward Castes) sits above zero — it holds more
+                  wealth than its population share — while OBC, SC, and ST sit below zero. OBC and FC only have data
+                  from 2002 onward: pre-1999 surveys didn't separate them from the rest of the non-SC/ST population.
+                </p>
+              </ChartHelp>
+              <p className="card-note">
+                Source: {academic.data.wealth_concentration_gap.source.study.split("(")[0].trim()} (
+                {academic.data.wealth_concentration_gap.source.table_reference}) —{" "}
+                <a href={academic.data.wealth_concentration_gap.source.url} target="_blank" rel="noreferrer">
+                  source PDF
+                </a>
+                . National (all-India) figures, computed by the source paper from NSS-AIDIS survey rounds.
+              </p>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart
+                  data={academic.data.wealth_concentration_gap.years.map((year, i) => ({
+                    year,
+                    FC: academic.data!.wealth_concentration_gap.series.FC[i],
+                    OBC: academic.data!.wealth_concentration_gap.series.OBC[i],
+                    SC: academic.data!.wealth_concentration_gap.series.SC[i],
+                    ST: academic.data!.wealth_concentration_gap.series.ST[i],
+                  }))}
+                  margin={{ top: 10, right: 20, bottom: 0, left: 0 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
+                  <XAxis dataKey="year" tick={{ fontSize: 12.5 }} />
+                  <YAxis tick={{ fontSize: 12.5 }} width={44} unit="pp" />
+                  <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v > 0 ? "+" : ""}${v}pp`} />
+                  <ReferenceLine y={0} stroke="var(--color-text-muted)" strokeDasharray="4 4" />
+                  <Line type="monotone" dataKey="FC" stroke={CATEGORY_COLOR.General} strokeWidth={2.5} dot={{ r: 3 }} connectNulls={false} />
+                  <Line type="monotone" dataKey="OBC" stroke={CATEGORY_COLOR.OBC} strokeWidth={2} dot={{ r: 3 }} connectNulls={false} />
+                  <Line type="monotone" dataKey="SC" stroke={CATEGORY_COLOR.SC} strokeWidth={2.5} dot={{ r: 3 }} />
+                  <Line type="monotone" dataKey="ST" stroke={CATEGORY_COLOR.ST} strokeWidth={2.5} dot={{ r: 3 }} />
+                  <Legend wrapperStyle={{ fontSize: 12 }} />
+                </LineChart>
+              </ResponsiveContainer>
+              <GraphVerdict direction="up" tone="negative">
+                Gap from proportional wealth share widened for FC (+14.0pp → +18.2pp) and OBC (-7.9pp → -10.2pp,
+                2002–2012); SC and ST stayed roughly flat around -10 to -11pp and -1 to -3pp (1991–2012) — none of
+                the four groups moved toward zero
+              </GraphVerdict>
+              <p className="card-note" style={{ marginTop: 10 }}>
+                {academic.data.wealth_concentration_gap.source_quote}
+              </p>
+              <p className="card-note">
+                <strong>A second, independent study agrees</strong> —{" "}
+                {academic.data.corroborating_study_not_charted.study.split("(")[0].trim()}, "
+                {academic.data.corroborating_study_not_charted.source_quote}" This one isn't charted here:{" "}
+                {academic.data.corroborating_study_not_charted.why_not_charted.split(". ")[1] ??
+                  academic.data.corroborating_study_not_charted.why_not_charted}{" "}
+                <a href={academic.data.corroborating_study_not_charted.url} target="_blank" rel="noreferrer">
+                  source PDF
+                </a>
+                .
+              </p>
+            </div>
+          )}
 
           <div className="card">
             <h2>Indebtedness: 2012-13 vs. 2019</h2>

@@ -133,6 +133,27 @@ export interface AidisData {
   };
 }
 
+export interface AcademicWealthConcentrationData {
+  wealth_concentration_gap: {
+    note: string;
+    source: { study: string; url: string; table_reference: string; methodology: string };
+    years: number[];
+    series: {
+      FC: (number | null)[];
+      OBC: (number | null)[];
+      SC: (number | null)[];
+      ST: (number | null)[];
+    };
+    source_quote: string;
+  };
+  corroborating_study_not_charted: {
+    study: string;
+    url: string;
+    why_not_charted: string;
+    source_quote: string;
+  };
+}
+
 export interface MpceGroupValues {
   ST: number;
   SC: number;

@@ -1,0 +1,26 @@
+{
+  "description": "This project's own AIDIS pipeline (aidis_transcribed.json) is a single 2019 snapshot and cannot show whether the caste wealth gap is narrowing over time. This file transcribes a genuinely multi-round series from an external academic study so that trend can actually be plotted, plus cites a second corroborating study whose finding agrees but whose underlying numbers aren't available as a data table (only as a chart image in a slide deck), so it is NOT charted here -- only cited as text. See docs/data-sources.md section 1c for the full explanation.",
+  "wealth_concentration_gap": {
+    "note": "Representational inequality: each caste group's share of India's total household wealth minus its share of India's total population, in percentage points, at the national level. Zero means the group holds exactly its population-proportional share of total wealth. Positive means over-represented in wealth (holds more than its population share); negative means under-represented.",
+    "source": {
+      "study": "Bharti, Nitin Kumar (2018). \"Wealth Inequality, Class and Caste in India, 1961-2012.\" World Inequality Lab Working Paper 2018/14 (Masters thesis, Paris School of Economics; supervisor Thomas Piketty, referee Abhijit Banerjee).",
+      "url": "https://wid.world/www-site/uploads/2018/11/WID_WORKING_PAPER_2018_14_India_wealth.pdf",
+      "table_reference": "Table 20, p.40 (\"Representational Wealth Inequality\"), India (all-sector) columns.",
+      "methodology": "Computed by the source paper from NSS-AIDIS survey rounds 1991, 2002, and 2012, using individual-level wealth (household wealth split among adult household members). ST and SC are tracked across all three rounds. OBC and FC are tracked only from 2002 onward: pre-1999 NSS surveys did not collect a category that lets the paper split the non-SC/ST population into OBC vs. Forward Caste, so no comparable 1991 figure exists for those two groups -- shown as null below rather than estimated."
+    },
+    "years": [1991, 2002, 2012],
+    "series": {
+      "FC": [null, 14.02, 18.17],
+      "OBC": [null, -7.88, -10.21],
+      "SC": [-11.23, -10.3, -10.84],
+      "ST": [-2.83, -0.18, -1.95]
+    },
+    "source_quote": "The data shows that the situation of every caste has improved over time, but there is no convergence between upper and lower castes. The rate of growth of forward/upper castes in terms of acquiring wealth or consumption is higher than the lower castes."
+  },
+  "corroborating_study_not_charted": {
+    "study": "Anand, Ishan (2023). \"Caste-based and Racial Wealth Inequality in India and the United States.\" Presentation, World Bank / IIT Delhi.",
+    "url": "https://thedocs.worldbank.org/en/doc/24e9d8b96858e6e947d34a0c81f4bc6a-0310022023/related/Ishan-Anand.pdf",
+    "why_not_charted": "This source tracks the Forward-Caste/SC wealth ratio (mean and median) for 2002, 2012, and 2018-19, but the only numbers given are read off a chart image in a slide deck -- there is no printed data table. Plotting estimated pixel-readings as if they were exact published figures would fabricate a precision the source doesn't actually provide, so this study is cited as corroborating context only, not charted.",
+    "source_quote": "Ownership rates: slow progress; no convergence in sight."
+  }
+}
