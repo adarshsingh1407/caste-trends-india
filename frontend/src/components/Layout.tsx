@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useOpenAbout } from "./AboutContext";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Layout() {
   const openAbout = useOpenAbout();
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
     <>
@@ -14,7 +16,15 @@ export function Layout() {
             <div className="brand-sub">India</div>
           </div>
           <div className="header-right">
-            <nav className="nav">
+            <button
+              className="nav-toggle"
+              onClick={() => setIsNavOpen((open) => !open)}
+              aria-label={isNavOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isNavOpen}
+            >
+              {isNavOpen ? "✕" : "☰"}
+            </button>
+            <nav className={`nav${isNavOpen ? " nav-open" : ""}`} onClick={() => setIsNavOpen(false)}>
               <NavLink to="/" end className={({ isActive }) => (isActive ? "active" : "")}>
                 Overview
               </NavLink>
@@ -51,6 +61,7 @@ export function Layout() {
           </div>
         </div>
       </header>
+      {isNavOpen && <div className="nav-overlay" onClick={() => setIsNavOpen(false)} />}
       <main className="app-main">
         <Outlet />
       </main>
