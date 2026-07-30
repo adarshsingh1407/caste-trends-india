@@ -46,36 +46,60 @@ export function OpinionSection(props: Props) {
       </p>
 
       <h3>Four threads</h3>
-      <ul>
-        <li>
-          <strong>Representation is genuinely improving:</strong> the education gap narrowed from{" "}
-          {scGap2014.toFixed(1)}→{scGapNow.toFixed(1)} pts (SC) and {stGap2014.toFixed(1)}→{stGapNow.toFixed(1)} pts
-          (ST), 2014-15–{gerLatestYear}.
-        </li>
-        <li>
-          <strong>But it has a ceiling:</strong> senior (Group A) roles stayed below quota every year checked
-          ({scGroupAGapNow.toFixed(2)} pts SC, {stGroupAGapNow.toFixed(2)} pts ST below, as of the latest data)
-          while junior roles exceeded it throughout.
-        </li>
-        <li>
-          <strong>Wealth is the starkest, least-closing gap:</strong> SC/ST hold only ~{scAssetPctOfOthers}%/
-          {stAssetPctOfOthers}% of "Others'" asset value — a single 2019 snapshot, no trend data exists. Consumption
-          narrowed ({incomeFirstYear}→{incomeLastYear}), but that's a weaker proxy than actual wealth.
-        </li>
-        <li>
-          <strong>Crime data is genuinely ambiguous:</strong> rates rose {scRateDelta.toFixed(0)}%/
-          {stRateDelta.toFixed(0)}% (2017–{latestCrimeYear}) alongside rising convictions and a near-doubled
-          backlog — can't tell if that's more atrocities, better reporting, or both.
-        </li>
-      </ul>
+      <div className="opinion-threads">
+        <div className="opinion-thread" style={{ borderLeftColor: "var(--color-positive)" }}>
+          <div className="opinion-thread-title" style={{ color: "var(--color-positive)" }}>
+            ▲ Representation is improving
+          </div>
+          <div className="opinion-thread-stat">
+            Education gap: {scGap2014.toFixed(1)}→{scGapNow.toFixed(1)} pts (SC), {stGap2014.toFixed(1)}→
+            {stGapNow.toFixed(1)} pts (ST) · 2014-15–{gerLatestYear}
+          </div>
+        </div>
+        <div className="opinion-thread" style={{ borderLeftColor: "var(--color-negative)" }}>
+          <div className="opinion-thread-title" style={{ color: "var(--color-negative)" }}>
+            ▼ But it has a ceiling
+          </div>
+          <div className="opinion-thread-stat">
+            Senior (Group A) roles below quota every year checked ({scGroupAGapNow.toFixed(2)} pts SC,{" "}
+            {stGroupAGapNow.toFixed(2)} pts ST) — junior roles exceed it throughout
+          </div>
+        </div>
+        <div className="opinion-thread" style={{ borderLeftColor: "var(--color-negative)" }}>
+          <div className="opinion-thread-title" style={{ color: "var(--color-negative)" }}>
+            ▼ Wealth is the starkest gap
+          </div>
+          <div className="opinion-thread-stat">
+            SC/ST hold only ~{scAssetPctOfOthers}%/{stAssetPctOfOthers}% of "Others'" asset value (2019 snapshot, no
+            trend). Consumption narrowed ({incomeFirstYear}→{incomeLastYear}) but is a weaker proxy.
+          </div>
+        </div>
+        <div className="opinion-thread" style={{ borderLeftColor: "var(--color-text-muted)" }}>
+          <div className="opinion-thread-title" style={{ color: "var(--color-text-muted)" }}>
+            ▲ Crime data is ambiguous
+          </div>
+          <div className="opinion-thread-stat">
+            Rates rose {scRateDelta.toFixed(0)}%/{stRateDelta.toFixed(0)}% (2017–{latestCrimeYear}) alongside rising
+            convictions and a near-doubled backlog — more atrocities, better reporting, or both, can't tell.
+          </div>
+        </div>
+      </div>
 
       <h3>What it doesn't settle</h3>
-      <p>This narrows the range of honest positions — it doesn't pick one for you:</p>
-      <ul>
-        <li><strong>Continue as-is</strong> — the representation gains are real and took decades.</li>
-        <li><strong>Add a wealth-tested layer</strong> — representation hasn't closed the asset gap.</li>
-      </ul>
-      <p>I wouldn't trust a reading that landed on just one of these. Form your own from the tracks below.</p>
+      <p className="opinion-lead">This narrows the range of honest positions — it doesn't pick one for you:</p>
+      <div className="opinion-positions">
+        <div className="opinion-position">
+          <strong>Continue as-is</strong>
+          <span>the representation gains are real and took decades.</span>
+        </div>
+        <div className="opinion-position">
+          <strong>Add a wealth-tested layer</strong>
+          <span>representation hasn't closed the asset gap.</span>
+        </div>
+      </div>
+      <p className="opinion-lead">
+        I wouldn't trust a reading that landed on just one of these. Form your own from the tracks below.
+      </p>
     </div>
   );
 }

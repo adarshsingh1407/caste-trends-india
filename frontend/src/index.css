@@ -71,6 +71,71 @@
   }
 }
 
+/* Explicit user choice (via the theme toggle) always wins over the OS preference above,
+   in either direction -- the attribute selector's higher specificity handles this
+   regardless of source order. */
+:root[data-theme="dark"] {
+  --color-bg: #0d0d0d;
+  --color-surface: #1a1a19;
+  --color-border: #2c2c2a;
+  --color-text: #ffffff;
+  --color-text-muted: #c3c2b7;
+  --color-caveat-bg: #332a0f;
+  --color-caveat-border: #fab219;
+  --color-caveat-text: #f0c96b;
+
+  --color-sc: #3987e5;
+  --color-st: #d95926;
+  --color-obc: #199e70;
+  --color-general: #9085e9;
+  --color-all: #c3c2b7;
+  --color-projected: #5c584f;
+
+  --color-rural: #c98500;
+  --color-urban: #008300;
+
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #e66767;
+
+  --color-positive: var(--status-good);
+  --color-negative: var(--status-critical);
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --color-bg: #f9f9f7;
+  --color-surface: #fcfcfb;
+  --color-border: #e1e0d9;
+  --color-text: #0b0b0b;
+  --color-text-muted: #52514e;
+  --color-caveat-bg: #fdf4e3;
+  --color-caveat-border: #fab219;
+  --color-caveat-text: #7a5200;
+
+  --color-sc: #2a78d6;
+  --color-st: #eb6834;
+  --color-obc: #1baf7a;
+  --color-general: #4a3aa7;
+  --color-all: #52514e;
+  --color-projected: #a8a49a;
+
+  --color-rural: #eda100;
+  --color-urban: #008300;
+
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+
+  --color-positive: var(--status-good);
+  --color-negative: var(--status-critical);
+
+  color-scheme: light;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -168,6 +233,31 @@ a {
   padding: 7px 12px;
   cursor: pointer;
   white-space: nowrap;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.theme-toggle {
+  font-size: 16px;
+  line-height: 1;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  color: var(--color-text);
+  background: var(--color-bg);
 }
 
 .app-main {
@@ -407,6 +497,66 @@ a {
   margin-bottom: 8px;
 }
 
+.opinion-lead {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  margin: 0 0 10px;
+}
+
+.opinion-threads {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 10px;
+  margin: 10px 0 16px;
+}
+
+.opinion-thread {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.opinion-thread-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.opinion-thread-stat {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.opinion-positions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 6px 0 14px;
+}
+
+.opinion-position {
+  flex: 1 1 220px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.opinion-position strong {
+  font-size: 13.5px;
+}
+
+.opinion-position span {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
 .toggle-group {
   display: inline-flex;
   border: 1px solid var(--color-border);
@@ -592,5 +742,11 @@ table.data-table th {
 
   .nav-divider {
     display: none;
+  }
+
+  .theme-toggle {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
   }
 }
