@@ -684,9 +684,15 @@ a {
 
 .opinion-threads {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: 1fr;
   gap: 10px;
   margin: 10px 0 16px;
+}
+
+@media (min-width: 640px) {
+  .opinion-threads {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .opinion-thread {
