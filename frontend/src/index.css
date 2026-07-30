@@ -726,20 +726,52 @@ a {
   flex: 1 1 220px;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-general);
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 11px 14px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
 }
 
-.opinion-position strong {
+.opinion-position-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.opinion-position-label strong {
   font-size: 13.5px;
+  color: var(--color-general);
+}
+
+.opinion-position-badge {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--color-general);
+  border-radius: 50%;
 }
 
 .opinion-position span {
   font-size: 12.5px;
+  line-height: 1.5;
   color: var(--color-text-muted);
+}
+
+.opinion-aside {
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--color-text-muted);
+  border-left: 3px solid var(--color-border);
+  padding-left: 10px;
+  margin: 4px 0 0;
 }
 
 .toggle-group {

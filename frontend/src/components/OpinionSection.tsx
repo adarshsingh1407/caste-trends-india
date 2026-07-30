@@ -103,15 +103,21 @@ export function OpinionSection(props: Props) {
       <p className="opinion-lead">This narrows the range of honest positions — it doesn't pick one for you:</p>
       <div className="opinion-positions">
         <div className="opinion-position">
-          <strong>Continue as-is</strong>
+          <span className="opinion-position-label">
+            <span className="opinion-position-badge">A</span>
+            <strong>Continue as-is</strong>
+          </span>
           <span>the representation gains are real and took decades.</span>
         </div>
         <div className="opinion-position">
-          <strong>Add a wealth-tested layer</strong>
+          <span className="opinion-position-label">
+            <span className="opinion-position-badge">B</span>
+            <strong>Add a wealth-tested layer</strong>
+          </span>
           <span>representation hasn't closed the asset gap.</span>
         </div>
       </div>
-      <p className="opinion-lead">
+      <p className="opinion-aside">
         I wouldn't trust a reading that landed on just one of these. Form your own from the tracks below.
       </p>
     </div>
