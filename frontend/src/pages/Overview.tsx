@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import { useJsonData } from "../hooks/useJsonData";
 import { OpinionSection } from "../components/OpinionSection";
+import { ThumbIcon } from "../components/ThumbIcon";
 import { CATEGORY_COLOR } from "../constants/categoryColors";
 import {
   CrimeYearRow,
@@ -37,7 +38,6 @@ function TrackWidget({
   const [showInfo, setShowInfo] = useState(false);
   const verdictColor =
     tone === "positive" ? "var(--color-positive)" : tone === "negative" ? "var(--color-negative)" : "var(--color-text-muted)";
-  const verdictThumb = tone === "positive" ? "👍 " : tone === "negative" ? "👎 " : "";
   const manyValues = values.length > 2;
   return (
     <div className="track-widget">
@@ -83,8 +83,13 @@ function TrackWidget({
         </div>
       )}
       <div className="track-widget-verdict" style={{ color: verdictColor }}>
-        {direction === "up" ? "▲" : "▼"} {verdictThumb}
-        {verdict}
+        {direction === "up" ? "▲" : "▼"} {verdict}
+        {tone !== "neutral" && (
+          <>
+            {" "}
+            <ThumbIcon tone={tone} />
+          </>
+        )}
       </div>
     </div>
   );

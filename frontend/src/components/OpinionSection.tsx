@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ThumbIcon } from "./ThumbIcon";
 
 interface Props {
   latestCrimeYear: number;
@@ -49,7 +50,7 @@ export function OpinionSection(props: Props) {
       <div className="opinion-threads">
         <div className="opinion-thread" style={{ borderLeftColor: "var(--color-positive)" }}>
           <div className="opinion-thread-title" style={{ color: "var(--color-positive)" }}>
-            ▲ 👍 Representation is improving
+            ▲ Representation is improving <ThumbIcon tone="positive" size={14} />
           </div>
           <div className="opinion-thread-stat">
             Education gap: {scGap2014.toFixed(1)}→{scGapNow.toFixed(1)} pts (SC), {stGap2014.toFixed(1)}→
@@ -58,7 +59,7 @@ export function OpinionSection(props: Props) {
         </div>
         <div className="opinion-thread" style={{ borderLeftColor: "var(--color-negative)" }}>
           <div className="opinion-thread-title" style={{ color: "var(--color-negative)" }}>
-            ▼ 👎 But it has a ceiling
+            ▼ But it has a ceiling <ThumbIcon tone="negative" size={14} />
           </div>
           <div className="opinion-thread-stat">
             Senior (Group A) roles below quota every year checked ({scGroupAGapNow.toFixed(2)} pts SC,{" "}
@@ -67,7 +68,7 @@ export function OpinionSection(props: Props) {
         </div>
         <div className="opinion-thread" style={{ borderLeftColor: "var(--color-negative)" }}>
           <div className="opinion-thread-title" style={{ color: "var(--color-negative)" }}>
-            ▼ 👎 Wealth is the starkest gap
+            ▼ Wealth is the starkest gap <ThumbIcon tone="negative" size={14} />
           </div>
           <div className="opinion-thread-stat">
             SC/ST hold only ~{scAssetPctOfOthers}%/{stAssetPctOfOthers}% of "Others'" asset value (2019 snapshot, no

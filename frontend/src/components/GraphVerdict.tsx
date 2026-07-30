@@ -1,3 +1,5 @@
+import { ThumbIcon } from "./ThumbIcon";
+
 type Tone = "positive" | "negative" | "neutral";
 
 /**
@@ -19,11 +21,15 @@ export function GraphVerdict({
   const color =
     tone === "positive" ? "var(--color-positive)" : tone === "negative" ? "var(--color-negative)" : "var(--color-text-muted)";
   const arrow = direction === "up" ? "▲" : "▼";
-  const thumb = tone === "positive" ? "👍 " : tone === "negative" ? "👎 " : "";
   return (
     <p style={{ fontSize: 12.5, fontWeight: 600, color, margin: "10px 0 0" }}>
-      {arrow} {thumb}
-      {children}
+      {arrow} {children}
+      {tone !== "neutral" && (
+        <>
+          {" "}
+          <ThumbIcon tone={tone} />
+        </>
+      )}
     </p>
   );
 }
