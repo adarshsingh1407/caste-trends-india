@@ -42,6 +42,20 @@ export interface PopulationShareTrendData {
   years: { year: number; sc_pct: number; st_pct: number; is_projected: boolean }[];
 }
 
+export interface PopulationDistributionEstimateData {
+  note: string;
+  sc_st_source: string;
+  scenarios: {
+    id: string;
+    label: string;
+    obc_source: string;
+    sc_pct: number;
+    st_pct: number;
+    obc_pct: number;
+    general_pct: number;
+  }[];
+}
+
 export interface DoptYearRow {
   year: number;
   data_as_on: string;

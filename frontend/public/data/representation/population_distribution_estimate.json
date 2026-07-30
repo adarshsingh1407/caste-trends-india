@@ -1,0 +1,24 @@
+{
+  "note": "Two old, non-comparable, non-official guesses -- not a range with a 'true' value somewhere inside it, and not two points on a trend. Shown side by side, never averaged or blended into one number, so neither is misread as more authoritative than the other. SC/ST shares used for the residual are the exact 2011 Census figures (16.63% SC, 8.61% ST), not the UN-denominator-adjusted per-year projection used elsewhere -- this is a single point-in-time illustration, not part of the year-by-year series.",
+  "sc_st_source": "Census of India 2011 (exact)",
+  "scenarios": [
+    {
+      "id": "nsso",
+      "label": "Using NSSO's OBC estimate",
+      "obc_source": "NSSO 55th/61st Round sample surveys (1999-2000, 2004-05/2006)",
+      "sc_pct": 16.63,
+      "st_pct": 8.61,
+      "obc_pct": 41.0,
+      "general_pct": 33.76
+    },
+    {
+      "id": "mandal",
+      "label": "Using the Mandal Commission's OBC estimate",
+      "obc_source": "Mandal Commission Report, 1980 (itself an extrapolation from the 1931 Census, the last to enumerate caste beyond SC/ST)",
+      "sc_pct": 16.63,
+      "st_pct": 8.61,
+      "obc_pct": 52.0,
+      "general_pct": 22.76
+    }
+  ]
+}

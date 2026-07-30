@@ -27,5 +27,22 @@
       "2023": 1438069596, "2024": 1450935791, "2025": 1463865525, "2026": 1476625576
     }
   },
-  "obc_general_note": "No equivalent projection is possible for OBC or General population share. India's census has not enumerated caste beyond SC/ST since 1931 -- the commonly-cited OBC figures (~52% from the Mandal Commission, 1980, itself an extrapolation from the 1931 count; ~41% from NSSO 1999-2000/2006 sample surveys) are two different old estimates using different methods, not two points on a trend that can be projected forward the way SC/ST's 2001->2011 census figures can. 'General/Other' as a residual (100% - SC% - ST% - OBC%) inherits all of that uncertainty: using the NSSO figure implies ~31% General; using Mandal's implies ~20% -- an 11-point swing depending purely on which decades-old OBC estimate is chosen. This is why population-share benchmarks elsewhere in this project are computed for SC/ST only, never for OBC/General."
+  "obc_general_note": "No equivalent projection is possible for OBC or General population share. India's census has not enumerated caste beyond SC/ST since 1931 -- the commonly-cited OBC figures (~52% from the Mandal Commission, 1980, itself an extrapolation from the 1931 count; ~41% from NSSO 1999-2000/2006 sample surveys) are two different old estimates using different methods, not two points on a trend that can be projected forward the way SC/ST's 2001->2011 census figures can. 'General/Other' as a residual (100% - SC% - ST% - OBC%) inherits all of that uncertainty: using the NSSO figure implies ~34% General; using Mandal's implies ~23% -- an 11-point swing depending purely on which decades-old OBC estimate is chosen. This is why population-share benchmarks elsewhere in this project are computed for SC/ST only, never for OBC/General.",
+  "obc_general_estimates": {
+    "note": "Two old, non-comparable, non-official guesses -- not a range with a 'true' value somewhere inside it, and not two points on a trend. Shown side by side, never averaged or blended into one number, so neither is misread as more authoritative than the other. SC/ST shares used for the residual are the exact 2011 Census figures (16.63% SC, 8.61% ST), not the UN-denominator-adjusted per-year projection used elsewhere -- this is a single point-in-time illustration, not part of the year-by-year series.",
+    "scenarios": [
+      {
+        "id": "nsso",
+        "label": "Using NSSO's OBC estimate",
+        "obc_source": "NSSO 55th/61st Round sample surveys (1999-2000, 2004-05/2006)",
+        "obc_pct": 41.0
+      },
+      {
+        "id": "mandal",
+        "label": "Using the Mandal Commission's OBC estimate",
+        "obc_source": "Mandal Commission Report, 1980 (itself an extrapolation from the 1931 Census, the last to enumerate caste beyond SC/ST)",
+        "obc_pct": 52.0
+      }
+    ]
+  }
 }

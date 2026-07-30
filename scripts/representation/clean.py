@@ -148,6 +148,42 @@ def build_population_trend_output() -> dict:
     }
 
 
+def build_population_distribution_output() -> dict:
+    """Estimated full population distribution (SC, ST, OBC, General) as a single
+    point-in-time illustration -- NOT a trend, and NOT mixed into the SC/ST-only
+    projected series above. SC/ST use the exact 2011 Census shares; OBC/General are
+    two old, non-comparable, non-official guesses shown side by side, never averaged,
+    since India's census hasn't enumerated caste beyond SC/ST since 1931 (see
+    obc_general_estimates.note in the reference file for why these two specific
+    figures, and why no single "best estimate" is picked between them)."""
+    reference = json.loads((ROOT / "data" / "reference" / "sc_st_census_population.json").read_text())
+    anchor_2011 = next(a for a in reference["anchors"] if a["year"] == 2011)
+    sc_pct = round(anchor_2011["sc_population"] / anchor_2011["total_population"] * 100, 2)
+    st_pct = round(anchor_2011["st_population"] / anchor_2011["total_population"] * 100, 2)
+    estimates = reference["obc_general_estimates"]
+
+    scenarios = []
+    for scenario in estimates["scenarios"]:
+        general_pct = round(100 - sc_pct - st_pct - scenario["obc_pct"], 2)
+        scenarios.append(
+            {
+                "id": scenario["id"],
+                "label": scenario["label"],
+                "obc_source": scenario["obc_source"],
+                "sc_pct": sc_pct,
+                "st_pct": st_pct,
+                "obc_pct": scenario["obc_pct"],
+                "general_pct": general_pct,
+            }
+        )
+
+    return {
+        "note": estimates["note"],
+        "sc_st_source": "Census of India 2011 (exact)",
+        "scenarios": scenarios,
+    }
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -164,6 +200,13 @@ def main() -> None:
     print(
         f"Wrote {len(population_output['years'])} years of population share trend to "
         f"{OUTPUT_DIR / 'population_share_trend.json'}"
+    )
+
+    distribution_output = build_population_distribution_output()
+    (OUTPUT_DIR / "population_distribution_estimate.json").write_text(json.dumps(distribution_output, indent=2))
+    print(
+        f"Wrote {len(distribution_output['scenarios'])} population distribution scenarios to "
+        f"{OUTPUT_DIR / 'population_distribution_estimate.json'}"
     )
 
 

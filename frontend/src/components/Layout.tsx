@@ -23,6 +23,7 @@ const NAV_STRUCTURE: NavEntry[] = [
     type: "group",
     label: "Representation",
     items: [
+      { to: "/population", label: "Population Share" },
       { to: "/representation", label: "Education & Employment" },
       { to: "/parliament", label: "Parliament" },
     ],

@@ -4,6 +4,7 @@ import { AboutProvider } from "./components/AboutContext";
 import { Overview } from "./pages/Overview";
 import { CrimeTrends } from "./pages/CrimeTrends";
 import { Representation } from "./pages/Representation";
+import { Population } from "./pages/Population";
 import { Parliament } from "./pages/Parliament";
 import { IncomeConsumption } from "./pages/IncomeConsumption";
 import { Wealth } from "./pages/Wealth";
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="crime" element={<CrimeTrends />} />
             <Route path="attitudes" element={<SocialAttitudes />} />
             <Route path="representation" element={<Representation />} />
+            <Route path="population" element={<Population />} />
             <Route path="parliament" element={<Parliament />} />
             <Route path="income" element={<IncomeConsumption />} />
             <Route path="wealth" element={<Wealth />} />
