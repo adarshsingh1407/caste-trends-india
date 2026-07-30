@@ -7,6 +7,7 @@ import { Representation } from "./pages/Representation";
 import { Population } from "./pages/Population";
 import { Parliament } from "./pages/Parliament";
 import { IncomeConsumption } from "./pages/IncomeConsumption";
+import { Unemployment } from "./pages/Unemployment";
 import { Wealth } from "./pages/Wealth";
 import { DataSources } from "./pages/DataSources";
 import { SocialAttitudes } from "./pages/SocialAttitudes";
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="population" element={<Population />} />
             <Route path="parliament" element={<Parliament />} />
             <Route path="income" element={<IncomeConsumption />} />
+            <Route path="unemployment" element={<Unemployment />} />
             <Route path="wealth" element={<Wealth />} />
             <Route path="data-sources" element={<DataSources />} />
             <Route path="juxtaposition" element={<Juxtaposition />} />

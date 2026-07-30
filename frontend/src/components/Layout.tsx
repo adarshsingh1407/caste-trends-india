@@ -34,6 +34,7 @@ const NAV_STRUCTURE: NavEntry[] = [
     items: [
       { to: "/wealth", label: "Wealth" },
       { to: "/income", label: "Income" },
+      { to: "/unemployment", label: "Unemployment" },
     ],
   },
   { type: "link", to: "/juxtaposition", label: "Juxtaposition" },

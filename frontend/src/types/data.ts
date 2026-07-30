@@ -271,3 +271,14 @@ export interface UntouchabilityData {
     south_east_west_note: string;
   };
 }
+
+export interface PlfsUnemploymentData {
+  description: string;
+  scope_note: string;
+  methodology_note: string;
+  years: {
+    year: string;
+    ur_pct: { ST: number; SC: number; OBC: number; Others: number; All: number };
+    source: { report: string; publisher: string; url: string; table_location: string };
+  }[];
+}

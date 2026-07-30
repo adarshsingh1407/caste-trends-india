@@ -136,6 +136,19 @@ Requested explicitly as the true "land ownership / financial strength" data poin
 
 ---
 
+## 1d. Unemployment rate — PLFS (labour-market outcome, its own page)
+
+Requested as a genuine labour-market outcome distinct from DoPT's central-government-employment representation and from Income/Wealth's consumption and asset measures. Filed under "Financial strength" in the nav, not "Representation" — unemployment status is an economic-security outcome, closer in kind to income/wealth than to institutional representation.
+
+- **Source: official PLFS ("Periodic Labour Force Survey") Annual Reports, MoSPI/NSO** — the standard, authoritative source for India's unemployment rate, hand-transcribed directly from each report's own "Statement" table (the same rigor as AISHE/DoPT: primary-source PDFs, not a third-party aggregator). A cleaner-looking pre-tabulated version of the same data exists on `dataful.in` ("PLFS: Year, Region, Gender, and Social Group wise Unemployment Rate", 2004-05 to 2025), but its full historical CSV is paywalled/download-gated behind an account — only a small page preview is public — so the official PDFs were used instead.
+- **What it has:** Unemployment Rate (UR, %) according to usual status (ps+ss), by social group (ST/SC/OBC/Others/All), national, "rural+urban" (PLFS's own combined estimate, not a simple average of separate rural/urban figures) and "person" (male+female combined) columns specifically, for six years: 2017-18, 2018-19, 2019-20, 2021-22, 2022-23, 2023-24.
+- **Three reports were needed to assemble six years without gaps**, since each Annual Report's own comparison table only reaches back 2-3 years: PLFS 2017-18 (Statement 44, its own first-year figure), PLFS 2019-20 (Statement 36, covering 2017-18/2018-19/2019-20 together — cross-checked against the 2017-18 report's own figure for that year, which matched exactly), and PLFS 2023-24 (Statement 19, covering 2021-22/2022-23/2023-24 together).
+- **2020-21 (the COVID year) is a confirmed gap, not a silent omission**: no report among the three used has a comparison table reaching back that far, and downloading a fourth full annual report (500+ pages each) just for one data point wasn't judged worth the added pipeline complexity. Stated explicitly in the UI.
+- **Sample design caveat, stated in every PLFS report itself**: social group is recorded once per household (based on the head of household), applied to every member regardless of their own individual category, and the survey isn't stratified to specifically oversample SC/ST/OBC populations — which is also why MoSPI doesn't publish state/UT-level breakdowns by social group (an official-source limitation, not one introduced by this project).
+- Full transcribed values, with exact statement/page citations per year: `data/raw/employment/plfs_unemployment_transcribed.json`. Processed by `scripts/employment/plfs_unemployment.py`.
+
+---
+
 ## 2a. Crime data — conviction rate & case disposal (separate from case-count trend)
 
 The main crime pipeline (section 1) only had case-registration counts, not what happens after — chargesheet rate, conviction rate, case backlog. Found via a Rajya Sabha Unstarred Question reply (No. 301, answered 24 July 2024, Ministry of Home Affairs, in response to a question from Shri Mukul Balkrishna Wasnik), hosted at `cvmc.in` (a non-government mirror, but the PDF itself is an authentic MHA parliamentary reply, no login needed).
@@ -173,7 +186,7 @@ The project brief itself flags that a national AISHE enrollment-share headline n
 
 ## 5. Other sources — checked, not used
 
-- **PLFS** (employment/income by social group): usable at the national level only (rural/urban/combined, SC/ST/Others breakdown) via `dataful.in`; state-level social-group breakdown would need raw microdata tabulation. Treated as optional/stretch, not a v1 dependency.
+- **PLFS organized/unorganized (formal/informal) sector share by social group**: PLFS microdata supports this cross-tab, but no official pre-tabulated table for it was found (unlike unemployment rate, which is charted — see section 1d) — it would need raw unit-level microdata tabulation, a heavier lift than the "one more table from an existing report" case. Flagged as a follow-up, not built.
 - **SECC 2011** (caste-wise asset data): confirmed dead end. The Solicitor General told the Supreme Court in 2021 that the caste enumeration was unusable (e.g. Maharashtra alone had 4.28 lakh distinct caste-name string variants, only 494 of which mapped to real OBC categories); the Court upheld non-disclosure. Excluded entirely.
 - **EWS crime or population data:** no baseline exists anywhere; not tracked.
 

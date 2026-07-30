@@ -1,0 +1,103 @@
+{
+  "description": "Unemployment Rate (UR, %) according to usual status (ps+ss), for persons of age 15 years and above, by social group (ST/SC/OBC/Others/All), hand-transcribed from the 'Statement' tables in three official PLFS Annual Reports. 'Person' means male+female combined; 'rural+urban' means the national combined figure (not summed from rural/urban -- it's itself a survey-weighted estimate, per PLFS methodology).",
+  "scope_note": "2020-21 is not included: none of the three reports used here carries a 3-year comparison table reaching back that far, and pulling a fourth full annual report just for that one year was judged not worth the added pipeline complexity. This is a confirmed gap, not a silent omission -- the years actually covered are 2017-18, 2018-19, 2019-20, 2021-22, 2022-23, 2023-24, six of the seven years PLFS has run since inception.",
+  "methodology_note": "PLFS records social group (ST/SC/OBC/'others') based on the household head's self-reported category, applied to all household members regardless of their own individual category. Sample design is not stratified to specifically capture SC/ST/OBC populations, so state/UT-level breakdowns by social group are not published by MoSPI for this reason (stated explicitly in each report) -- consistent with why this dashboard also only shows national-level figures here.",
+  "years": [
+    {
+      "year": "2017-18",
+      "ur_pct": {
+        "ST": 4.3,
+        "SC": 6.3,
+        "OBC": 6.0,
+        "Others": 6.7,
+        "All": 6.1
+      },
+      "source": {
+        "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2017-18",
+        "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
+        "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/Annual%20Report,%20PLFS%202017-18_31052019.pdf",
+        "table_location": "Statement 44 (p. 93 of the report, PDF p. 132), Section 3.9.5"
+      }
+    },
+    {
+      "year": "2018-19",
+      "ur_pct": {
+        "ST": 4.5,
+        "SC": 6.4,
+        "OBC": 5.9,
+        "Others": 5.9,
+        "All": 5.8
+      },
+      "source": {
+        "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2019-20",
+        "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
+        "url": "https://mospi.gov.in/sites/default/files/publication_reports/Annual_Report_PLFS_2019_20F1.pdf",
+        "table_location": "Statement 36 (p. 74 of the report, PDF p. 108), Section 3.9.4 -- this report's 3-year comparison table, covering 2017-18/2018-19/2019-20 together"
+      }
+    },
+    {
+      "year": "2019-20",
+      "ur_pct": {
+        "ST": 3.4,
+        "SC": 4.9,
+        "OBC": 4.7,
+        "Others": 5.5,
+        "All": 4.8
+      },
+      "source": {
+        "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2019-20",
+        "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
+        "url": "https://mospi.gov.in/sites/default/files/publication_reports/Annual_Report_PLFS_2019_20F1.pdf",
+        "table_location": "Statement 36 (p. 74 of the report, PDF p. 108), Section 3.9.4"
+      }
+    },
+    {
+      "year": "2021-22",
+      "ur_pct": {
+        "ST": 2.4,
+        "SC": 4.4,
+        "OBC": 3.9,
+        "Others": 4.9,
+        "All": 4.1
+      },
+      "source": {
+        "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2023-24",
+        "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
+        "url": "https://mospi.gov.in/sites/default/files/publication_reports/AnnualReport_PLFS2023-24L2.pdf",
+        "table_location": "Statement 19 (p. 25 of the report, PDF p. 55), Section 2.7.3 -- this report's 3-year comparison table, covering 2021-22/2022-23/2023-24 together"
+      }
+    },
+    {
+      "year": "2022-23",
+      "ur_pct": {
+        "ST": 1.8,
+        "SC": 3.2,
+        "OBC": 3.3,
+        "Others": 3.4,
+        "All": 3.2
+      },
+      "source": {
+        "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2023-24",
+        "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
+        "url": "https://mospi.gov.in/sites/default/files/publication_reports/AnnualReport_PLFS2023-24L2.pdf",
+        "table_location": "Statement 19 (p. 25 of the report, PDF p. 55), Section 2.7.3"
+      }
+    },
+    {
+      "year": "2023-24",
+      "ur_pct": {
+        "ST": 1.9,
+        "SC": 3.3,
+        "OBC": 3.1,
+        "Others": 3.8,
+        "All": 3.2
+      },
+      "source": {
+        "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2023-24",
+        "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
+        "url": "https://mospi.gov.in/sites/default/files/publication_reports/AnnualReport_PLFS2023-24L2.pdf",
+        "table_location": "Statement 19 (p. 25 of the report, PDF p. 55), Section 2.7.3"
+      }
+    }
+  ]
+}
