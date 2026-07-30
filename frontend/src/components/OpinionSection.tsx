@@ -99,20 +99,23 @@ export function OpinionSection(props: Props) {
         </div>
       </div>
 
-      <h3>What it doesn't settle</h3>
-      <p className="opinion-lead">This narrows the range of honest positions — it doesn't pick one for you:</p>
+      <h3>What it doesn't settle: whether reservation policy should change</h3>
+      <p className="opinion-lead">
+        These four threads narrow the range of honest positions on SC/ST/OBC reservation in education and government
+        jobs — they don't pick one for you:
+      </p>
       <div className="opinion-positions">
         <div className="opinion-position">
           <span className="opinion-position-label">
             <span className="opinion-position-badge">A</span>
-            <strong>Continue as-is</strong>
+            <strong>Keep reservation as it is</strong>
           </span>
           <span>the representation gains are real and took decades.</span>
         </div>
         <div className="opinion-position">
           <span className="opinion-position-label">
             <span className="opinion-position-badge">B</span>
-            <strong>Add a wealth-tested layer</strong>
+            <strong>Add a wealth test to reservation</strong>
           </span>
           <span>representation hasn't closed the asset gap.</span>
         </div>

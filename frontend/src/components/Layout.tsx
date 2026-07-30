@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useOpenAbout } from "./AboutContext";
 import { ThemeToggle } from "./ThemeToggle";
 import { BrandIcon } from "./BrandIcon";
@@ -48,13 +48,13 @@ export function Layout() {
     <>
       <header className="app-header">
         <div className="app-header-inner">
-          <div className="brand-block">
+          <Link to="/" className="brand-block" onClick={() => setIsNavOpen(false)}>
             <BrandIcon />
             <div>
               <div className="brand">Caste Trends</div>
               <div className="brand-sub">India</div>
             </div>
-          </div>
+          </Link>
           <div className="header-right">
             <button
               className="nav-toggle"
