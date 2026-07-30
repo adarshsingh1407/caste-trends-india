@@ -1,4 +1,4 @@
-# Crime, Atrocity & Representation Trends — SC / ST / OBC (India)
+# Caste Trends | India
 
 A static, local-first dashboard tracking several separate evidence tracks for SC/ST (and OBC where data allows) in India:
 
