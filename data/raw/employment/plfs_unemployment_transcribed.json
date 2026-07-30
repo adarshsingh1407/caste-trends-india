@@ -1,7 +1,31 @@
 {
   "description": "Unemployment Rate (UR, %) according to usual status (ps+ss), for persons of age 15 years and above, by social group (ST/SC/OBC/Others/All), hand-transcribed from the 'Statement' tables in three official PLFS Annual Reports. 'Person' means male+female combined; 'rural+urban' means the national combined figure (not summed from rural/urban -- it's itself a survey-weighted estimate, per PLFS methodology).",
-  "scope_note": "2020-21 is not included: none of the three reports used here carries a 3-year comparison table reaching back that far, and pulling a fourth full annual report just for that one year was judged not worth the added pipeline complexity. This is a confirmed gap, not a silent omission -- the years actually covered are 2017-18, 2018-19, 2019-20, 2021-22, 2022-23, 2023-24, six of the seven years PLFS has run since inception.",
+  "scope_note": "2020-21 is not included: none of the three reports used here carries a 3-year comparison table reaching back that far, and pulling a fourth full annual report just for that one year was judged not worth the added pipeline complexity. This is a confirmed gap, not a silent omission -- the years actually covered are 2017-18, 2018-19, 2019-20, 2021-22, 2022-23, 2023-24, six of the seven years PLFS has run since inception, assembled from three reports: PLFS 2017-18 (its own first-year figure), PLFS 2019-20 (whose Statement 36 covers 2017-18/2018-19/2019-20 together -- its 2017-18 figure was cross-checked against the 2017-18 report's own Statement 44 and matches exactly), and PLFS 2023-24 (whose Statement 19 covers 2021-22/2022-23/2023-24 together).",
   "methodology_note": "PLFS records social group (ST/SC/OBC/'others') based on the household head's self-reported category, applied to all household members regardless of their own individual category. Sample design is not stratified to specifically capture SC/ST/OBC populations, so state/UT-level breakdowns by social group are not published by MoSPI for this reason (stated explicitly in each report) -- consistent with why this dashboard also only shows national-level figures here.",
+  "data_integrity_note": "The 2017-18 PLFS report -- this dashboard's earliest data point -- was itself the subject of a 2019 controversy: two non-government members of the National Statistical Commission, including acting chairman P.C. Mohanan, resigned in January 2019 alleging the government was withholding the report's release despite the NSC having already approved it in December 2018, ahead of the 2019 general election. The report (showing a then-45-year-high 6.1% unemployment rate) leaked to the press before being officially released, essentially unchanged, after the election. Separately, PLFS's 'usual status' definition -- which counts even marginal or subsistence work as employment -- is a structural reason PLFS tends to show lower unemployment than independent sources like CMIE; this is a methodology choice, not evidence of tampering with the numbers themselves.",
+  "population_by_sector": {
+    "note": "Percentage distribution of persons by social group, rural vs. urban vs. national, a single 2017-18 snapshot -- not part of the year-by-year unemployment series. Shown because it explains part of the unemployment-rate pattern above: unemployment is mechanically higher in urban areas for every social group, and Others/General are far more concentrated in urban India than ST, SC, or OBC are.",
+    "source": {
+      "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2017-18",
+      "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
+      "url": "https://www.mospi.gov.in/sites/default/files/publication_reports/Annual%20Report,%20PLFS%202017-18_31052019.pdf",
+      "table_location": "Statement 40 (p. 44 of the report, PDF p. 129), Section 3.9.1"
+    },
+    "rural_pct": { "ST": 11.7, "SC": 21.6, "OBC": 43.5, "Others": 23.2 },
+    "urban_pct": { "ST": 3.6, "SC": 14.9, "OBC": 41.2, "Others": 40.3 },
+    "national_pct": { "ST": 9.3, "SC": 19.6, "OBC": 42.8, "Others": 28.2 }
+  },
+  "lfpr_wpr_2023_24": {
+    "note": "Labour Force Participation Rate (LFPR, % of the population that is working or seeking work) and Worker Population Ratio (WPR, % of the population that is employed), rural+urban, person, 2023-24 only -- shown to counter a natural misreading of the unemployment chart above: ST's low unemployment rate is not because ST people are disengaged from the labour force. ST has the highest LFPR and WPR of any group, not the lowest.",
+    "source": {
+      "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2023-24",
+      "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
+      "url": "https://mospi.gov.in/sites/default/files/publication_reports/AnnualReport_PLFS2023-24L2.pdf",
+      "table_location": "Statement 17 (LFPR, p. 24, PDF p. 53) and Statement 18 (WPR, p. 25, PDF p. 54), Sections 2.7.1-2.7.2"
+    },
+    "lfpr_pct": { "ST": 53.0, "SC": 45.1, "OBC": 44.4, "Others": 43.2, "All": 45.1 },
+    "wpr_pct": { "ST": 52.0, "SC": 43.6, "OBC": 43.0, "Others": 41.5, "All": 43.7 }
+  },
   "years": [
     {
       "year": "2017-18",
@@ -20,7 +44,7 @@
         "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2019-20",
         "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
         "url": "https://mospi.gov.in/sites/default/files/publication_reports/Annual_Report_PLFS_2019_20F1.pdf",
-        "table_location": "Statement 36 (p. 74 of the report, PDF p. 108), Section 3.9.4 -- this report's 3-year comparison table, covering 2017-18/2018-19/2019-20 together"
+        "table_location": "Statement 36 (p. 74 of the report, PDF p. 108), Section 3.9.4"
       }
     },
     {
@@ -40,7 +64,7 @@
         "report": "Annual Report, Periodic Labour Force Survey (PLFS) 2023-24",
         "publisher": "National Statistical Office (NSO), Ministry of Statistics and Programme Implementation (MoSPI)",
         "url": "https://mospi.gov.in/sites/default/files/publication_reports/AnnualReport_PLFS2023-24L2.pdf",
-        "table_location": "Statement 19 (p. 25 of the report, PDF p. 55), Section 2.7.3 -- this report's 3-year comparison table, covering 2021-22/2022-23/2023-24 together"
+        "table_location": "Statement 19 (p. 25 of the report, PDF p. 55), Section 2.7.3"
       }
     },
     {

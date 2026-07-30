@@ -20,6 +20,9 @@ def main() -> None:
         "description": raw["description"],
         "scope_note": raw["scope_note"],
         "methodology_note": raw["methodology_note"],
+        "data_integrity_note": raw["data_integrity_note"],
+        "population_by_sector": raw["population_by_sector"],
+        "lfpr_wpr_2023_24": raw["lfpr_wpr_2023_24"],
         "years": raw["years"],
     }
 

@@ -1,9 +1,12 @@
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Link } from "react-router-dom";
 import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
 import { ChartHelp } from "../components/ChartHelp";
 import { CATEGORY_COLOR } from "../constants/categoryColors";
 import { PlfsUnemploymentData } from "../types/data";
+
+const GROUPS = ["ST", "SC", "OBC", "Others"] as const;
 
 export function Unemployment() {
   const { data, loading, error } = useJsonData<PlfsUnemploymentData>("data/employment/plfs_unemployment.json");
@@ -23,6 +26,12 @@ export function Unemployment() {
         plotted at even spacing regardless of the 2-year gap — read the x-axis as a sequence of surveyed years, not a
         strictly proportional timeline.
       </div>
+
+      {data && (
+        <div className="caveat-banner">
+          <strong>This data has a documented release-suppression episode.</strong> {data.data_integrity_note}
+        </div>
+      )}
 
       {loading && <p className="loading">Loading…</p>}
       {error && <p className="error-text">{error}</p>}
@@ -111,6 +120,92 @@ export function Unemployment() {
           </div>
 
           <div className="card">
+            <h2>Why a lower rate here isn't automatically good news</h2>
+            <ChartHelp>
+              <p>
+                Two supporting tables, not trends — both single-year snapshots. The first shows where each social
+                group actually lives (rural vs. urban); the second shows how engaged each group is with the labour
+                market at all, regardless of whether that work counts as "employed" or "unemployed."
+              </p>
+            </ChartHelp>
+            <p className="card-note">
+              ST shows the lowest unemployment rate of any group in every year above — but ST also has by far the
+              lowest household asset value of any group (see <Link to="/wealth">Wealth</Link>), the same pattern
+              already flagged there for low debt: a low rate here more plausibly reflects exclusion from secure,
+              measurable employment than economic security. Two things explain the gap without needing to invoke
+              caste-based "advantage" for ST or "disadvantage" for Others:
+            </p>
+
+            <h3 style={{ fontSize: 13.5, marginBottom: 6 }}>Where each group lives, 2017-18</h3>
+            <p className="card-note">{data.population_by_sector.note}</p>
+            <div className="table-scroll">
+              <table className="data-table" style={{ marginBottom: 16 }}>
+                <thead>
+                  <tr>
+                    <th>Social group</th>
+                    <th>Rural</th>
+                    <th>Urban</th>
+                    <th>National</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {GROUPS.map((g) => (
+                    <tr key={g}>
+                      <td>{g}</td>
+                      <td>{data.population_by_sector.rural_pct[g]}%</td>
+                      <td>{data.population_by_sector.urban_pct[g]}%</td>
+                      <td>{data.population_by_sector.national_pct[g]}%</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="card-note">
+              Others make up 40% of India's urban population but just 28% nationally — heavily concentrated in
+              cities. ST is nearly the reverse: 12% of rural India, only 4% of urban India. Since unemployment runs
+              structurally higher in cities than in villages for every group in this data, Others' more urban
+              population alone pushes their blended national rate up relative to ST/SC/OBC — part of the "gap" above
+              is a rural/urban composition effect, not purely a caste effect.
+            </p>
+
+            <h3 style={{ fontSize: 13.5, marginTop: 20, marginBottom: 6 }}>
+              Labour force engagement, 2023-24
+            </h3>
+            <p className="card-note">{data.lfpr_wpr_2023_24.note}</p>
+            <div className="table-scroll">
+              <table className="data-table">
+                <thead>
+                  <tr>
+                    <th>Social group</th>
+                    <th>LFPR (seeking or working)</th>
+                    <th>WPR (working)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {GROUPS.map((g) => (
+                    <tr key={g}>
+                      <td>{g}</td>
+                      <td>{data.lfpr_wpr_2023_24.lfpr_pct[g]}%</td>
+                      <td>{data.lfpr_wpr_2023_24.wpr_pct[g]}%</td>
+                    </tr>
+                  ))}
+                  <tr>
+                    <td>All</td>
+                    <td>{data.lfpr_wpr_2023_24.lfpr_pct.All}%</td>
+                    <td>{data.lfpr_wpr_2023_24.wpr_pct.All}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="card-note" style={{ marginTop: 10 }}>
+              ST isn't sitting out of the labour force — it has the <em>highest</em> LFPR and WPR of any group, not
+              the lowest. PLFS counts even marginal or subsistence work (common in the rural, agriculture-heavy work
+              ST households are concentrated in) as "employed," so a low measured unemployment rate here is
+              consistent with high engagement in precarious, informal work rather than secure jobs.
+            </p>
+          </div>
+
+          <div className="card">
             <h2>Full data</h2>
             <ChartHelp>
               <p>Same numbers as the chart above, one row per year, for checking exact values.</p>
@@ -146,11 +241,14 @@ export function Unemployment() {
           <div className="card">
             <h2>Sources</h2>
             <p className="card-note">{data.scope_note}</p>
-            {data.years
-              .map((y) => y.source)
-              .filter((src, i, arr) => arr.findIndex((s) => s.report === src.report) === i)
+            {[
+              ...data.years.map((y) => y.source),
+              data.population_by_sector.source,
+              data.lfpr_wpr_2023_24.source,
+            ]
+              .filter((src, i, arr) => arr.findIndex((s) => s.table_location === src.table_location) === i)
               .map((src) => (
-                <p key={src.report} style={{ fontSize: 12.5, marginBottom: 8 }}>
+                <p key={src.table_location} style={{ fontSize: 12.5, marginBottom: 8 }}>
                   <strong>{src.report}</strong> ({src.publisher}) — {src.table_location} —{" "}
                   <a href={src.url} target="_blank" rel="noreferrer">
                     source PDF

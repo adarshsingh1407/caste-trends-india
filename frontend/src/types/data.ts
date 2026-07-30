@@ -276,6 +276,20 @@ export interface PlfsUnemploymentData {
   description: string;
   scope_note: string;
   methodology_note: string;
+  data_integrity_note: string;
+  population_by_sector: {
+    note: string;
+    source: { report: string; publisher: string; url: string; table_location: string };
+    rural_pct: { ST: number; SC: number; OBC: number; Others: number };
+    urban_pct: { ST: number; SC: number; OBC: number; Others: number };
+    national_pct: { ST: number; SC: number; OBC: number; Others: number };
+  };
+  lfpr_wpr_2023_24: {
+    note: string;
+    source: { report: string; publisher: string; url: string; table_location: string };
+    lfpr_pct: { ST: number; SC: number; OBC: number; Others: number; All: number };
+    wpr_pct: { ST: number; SC: number; OBC: number; Others: number; All: number };
+  };
   years: {
     year: string;
     ur_pct: { ST: number; SC: number; OBC: number; Others: number; All: number };
