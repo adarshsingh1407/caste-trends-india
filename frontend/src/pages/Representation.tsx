@@ -16,7 +16,7 @@ import { useJsonData } from "../hooks/useJsonData";
 import { GraphVerdict } from "../components/GraphVerdict";
 import { ChartHelp } from "../components/ChartHelp";
 import { CATEGORY_COLOR } from "../constants/categoryColors";
-import { AisheData, DoptYearRow } from "../types/data";
+import { AisheData, DoptYearRow, PopulationShareTrendData } from "../types/data";
 
 const GROUP_ORDER = ["A", "B", "C_excl_safai_karamchari", "C_safai_karamchari"] as const;
 const GROUP_LABEL: Record<(typeof GROUP_ORDER)[number], string> = {
@@ -29,6 +29,7 @@ const GROUP_LABEL: Record<(typeof GROUP_ORDER)[number], string> = {
 export function Representation() {
   const aishe = useJsonData<AisheData>("data/representation/aishe_education.json");
   const dopt = useJsonData<DoptYearRow[]>("data/representation/dopt_employment.json");
+  const population = useJsonData<PopulationShareTrendData>("data/representation/population_share_trend.json");
 
   return (
     <div>
@@ -43,6 +44,65 @@ export function Representation() {
         workforce representation, not income or asset levels. This dashboard has no income/consumption data — treat
         rising enrollment or employment share as evidence about access, not about financial upliftment.
       </div>
+
+      {population.data && (
+        <div className="card">
+          <h2>SC/ST population share, for reference</h2>
+          <ChartHelp>
+            <p>
+              Line chart — SC and ST's share (%) of India's total population, by year. 2011 is the measured Census
+              figure; every year after that is a modeled estimate (see the dashed marker), not a new census count —
+              India hasn't held one since 2011. This chart doesn't show a "trend" so much as a single measured point
+              extrapolated forward — it's shown here as reference context for the enrollment and employment gaps
+              below, both of which compare against this same population-share benchmark.
+            </p>
+          </ChartHelp>
+          <p className="card-note">{population.data.source.methodology}</p>
+          <ResponsiveContainer width="100%" height={260}>
+            <LineChart data={population.data.years} margin={{ top: 10, right: 20, bottom: 0, left: 4 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
+              <XAxis
+                dataKey="year"
+                tick={{ fontSize: 12 }}
+                label={{ value: "Year", position: "insideBottom", offset: -8, fontSize: 11.5, fill: "var(--color-text-muted)" }}
+              />
+              <YAxis
+                tick={{ fontSize: 12 }}
+                width={44}
+                unit="%"
+                label={{
+                  value: "% of population",
+                  angle: -90,
+                  position: "insideLeft",
+                  fontSize: 11.5,
+                  fill: "var(--color-text-muted)",
+                  style: { textAnchor: "middle" },
+                }}
+              />
+              <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v}%`} />
+              <ReferenceLine
+                x={2011}
+                stroke="var(--color-caveat-border)"
+                strokeDasharray="4 4"
+                label={{ value: "2011 Census — measured; after this, modeled", position: "insideTopLeft", fontSize: 11, fill: "var(--color-caveat-text)" }}
+              />
+              <Line type="monotone" dataKey="sc_pct" stroke={CATEGORY_COLOR.SC} strokeWidth={2.5} dot={{ r: 3 }} />
+              <Line type="monotone" dataKey="st_pct" stroke={CATEGORY_COLOR.ST} strokeWidth={2.5} dot={{ r: 3 }} />
+            </LineChart>
+          </ResponsiveContainer>
+          <div className="legend-row">
+            <span>
+              <span className="swatch" style={{ background: CATEGORY_COLOR.SC }} /> SC
+            </span>
+            <span>
+              <span className="swatch" style={{ background: CATEGORY_COLOR.ST }} /> ST
+            </span>
+          </div>
+          <p className="card-note" style={{ marginTop: 10 }}>
+            {population.data.obc_general_note}
+          </p>
+        </div>
+      )}
 
       <div className="card">
         <h2>Higher education — Gross Enrolment Ratio (AISHE)</h2>

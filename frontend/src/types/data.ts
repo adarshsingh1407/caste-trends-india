@@ -31,6 +31,17 @@ export interface PopulationShare {
   note: string;
 }
 
+export interface PopulationShareTrendData {
+  note: string;
+  source: {
+    anchors: string;
+    denominator: string;
+    methodology: string;
+  };
+  obc_general_note: string;
+  years: { year: number; sc_pct: number; st_pct: number; is_projected: boolean }[];
+}
+
 export interface DoptYearRow {
   year: number;
   data_as_on: string;

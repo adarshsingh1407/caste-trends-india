@@ -115,6 +115,39 @@ def build_aishe_output() -> dict:
     }
 
 
+def build_population_trend_output() -> dict:
+    """Full SC/ST population-share trend (2011 Census actual, plus every CAGR-projected
+    year through PROJECT_THROUGH_YEAR), surfaced as its own reference chart. This is the
+    same series load_population_share() picks single years out of for the DoPT/AISHE
+    cards above -- shown in full here as a standalone reference, not a new finding."""
+    rows = json.loads(POPULATION_PROJECTED_FILE.read_text())
+    reference = json.loads((ROOT / "data" / "reference" / "sc_st_census_population.json").read_text())
+    return {
+        "note": (
+            "SC/ST share of India's total population, national. 2011 is the measured Census figure; "
+            "every other year is a modeled estimate (compound growth rate extrapolated from the "
+            "2001/2011 censuses, against a UN total-population estimate for the denominator -- see "
+            "scripts/common/population_projection.py). Shown for reference: this is the same "
+            "population-share benchmark plotted as dotted lines on the employment chart below and "
+            "quoted alongside enrollment share above, not a new finding on its own."
+        ),
+        "source": {
+            "anchors": "Census of India 2001 and 2011 (SC/ST population counts)",
+            "denominator": reference["total_population_by_year"]["source"],
+            "methodology": (
+                "Compound annual growth rate (CAGR) derived from the 2001-2011 census SC/ST "
+                "population growth, extrapolated forward. Only 2011 itself is a measured Census "
+                "figure; all other years are modeled."
+            ),
+        },
+        "obc_general_note": reference["obc_general_note"],
+        "years": [
+            {"year": r["year"], "sc_pct": r["sc_pct"], "st_pct": r["st_pct"], "is_projected": r["is_projected"]}
+            for r in rows
+        ],
+    }
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -125,6 +158,13 @@ def main() -> None:
     aishe_output = build_aishe_output()
     (OUTPUT_DIR / "aishe_education.json").write_text(json.dumps(aishe_output, indent=2))
     print(f"Wrote AISHE data to {OUTPUT_DIR / 'aishe_education.json'}")
+
+    population_output = build_population_trend_output()
+    (OUTPUT_DIR / "population_share_trend.json").write_text(json.dumps(population_output, indent=2))
+    print(
+        f"Wrote {len(population_output['years'])} years of population share trend to "
+        f"{OUTPUT_DIR / 'population_share_trend.json'}"
+    )
 
 
 if __name__ == "__main__":
