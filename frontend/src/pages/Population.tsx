@@ -26,9 +26,86 @@ export function Population() {
       <h1 className="page-title">Population Share</h1>
       <p className="page-subtitle">
         Reference context for the enrollment and employment gaps on the Education &amp; Employment page — both
-        compare against this same population-share benchmark. Not a track of its own with a trend verdict; shown
-        here for context only.
+        compare against this same population-share benchmark. Shown here for context only, with no trend verdict of
+        its own.
       </p>
+
+      <div className="caveat-banner">
+        <strong>SC/ST population share can be projected forward; OBC/General cannot.</strong> India's census has
+        measured SC/ST population at every count since 1951, most recently in 2011 — enough to derive a growth rate
+        and project it forward. It hasn't enumerated caste beyond SC/ST since 1931, so there's no equivalent trend
+        for OBC or General: the estimates below are two old, non-comparable guesses, not a projectable series.
+      </div>
+
+      {distribution.loading && <p className="loading">Loading…</p>}
+      {distribution.error && <p className="error-text">{distribution.error}</p>}
+
+      {distribution.data && (
+        <div className="card">
+          <h2>Estimated population distribution — SC, ST, OBC, General</h2>
+          <ChartHelp>
+            <p>
+              Horizontal 100%-stacked bar, two rows — a single snapshot, not a trend. SC and ST segments are the
+              exact 2011 Census share in both rows. OBC and General are two old, non-comparable estimates shown side
+              by side, never averaged into one "best guess": the top row uses NSSO's ~41% OBC estimate, the bottom
+              uses the Mandal Commission's ~52% estimate. Each row's General segment is just the leftover (100% −
+              SC% − ST% − OBC%) under that row's own OBC assumption — so the two rows aren't comparable
+              point-for-point beyond their shared SC/ST segments.
+            </p>
+          </ChartHelp>
+          <p className="card-note">{distribution.data.note}</p>
+          <ResponsiveContainer width="100%" height={180}>
+            <BarChart
+              layout="vertical"
+              data={distribution.data.scenarios.map((s) => ({
+                label: s.id === "nsso" ? "NSSO" : "Mandal Commission",
+                SC: s.sc_pct,
+                ST: s.st_pct,
+                OBC: s.obc_pct,
+                General: s.general_pct,
+              }))}
+              margin={{ top: 10, right: 20, bottom: 18, left: 4 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
+              <XAxis
+                type="number"
+                domain={[0, 100]}
+                unit="%"
+                tick={{ fontSize: 12 }}
+                label={{ value: "% of population", position: "insideBottom", offset: -8, fontSize: 11.5, fill: "var(--color-text-muted)" }}
+              />
+              <YAxis type="category" dataKey="label" width={150} tick={{ fontSize: 12 }} />
+              <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v}%`} />
+              <Bar dataKey="SC" stackId="a" fill={CATEGORY_COLOR.SC} />
+              <Bar dataKey="ST" stackId="a" fill={CATEGORY_COLOR.ST} />
+              <Bar dataKey="OBC" stackId="a" fill={CATEGORY_COLOR.OBC} />
+              <Bar dataKey="General" stackId="a" fill={CATEGORY_COLOR.General} />
+            </BarChart>
+          </ResponsiveContainer>
+          <div className="legend-row">
+            <span>
+              <span className="swatch" style={{ background: CATEGORY_COLOR.SC }} /> SC ({distribution.data.scenarios[0].sc_pct}%, both rows)
+            </span>
+            <span>
+              <span className="swatch" style={{ background: CATEGORY_COLOR.ST }} /> ST ({distribution.data.scenarios[0].st_pct}%, both rows)
+            </span>
+            <span>
+              <span className="swatch" style={{ background: CATEGORY_COLOR.OBC }} /> OBC (estimated)
+            </span>
+            <span>
+              <span className="swatch" style={{ background: CATEGORY_COLOR.General }} /> General/Other (residual)
+            </span>
+          </div>
+          {distribution.data.scenarios.map((s, i) => (
+            <p key={s.id} className="card-note" style={i === 0 ? { marginTop: 10 } : undefined}>
+              <strong>{s.obc_source}:</strong> OBC {s.obc_pct}% → General/Other ≈{s.general_pct}%.
+            </p>
+          ))}
+        </div>
+      )}
+
+      {population.loading && <p className="loading">Loading…</p>}
+      {population.error && <p className="error-text">{population.error}</p>}
 
       {population.data && (
         <div className="card">
@@ -90,70 +167,17 @@ export function Population() {
         </div>
       )}
 
-      {distribution.data && (
+      {population.data && (
         <div className="card">
-          <h2>Estimated population distribution — SC, ST, OBC, General</h2>
-          <ChartHelp>
-            <p>
-              Horizontal 100%-stacked bar, two rows — a single snapshot, not a trend. SC and ST segments are the
-              exact 2011 Census share in both rows. OBC and General are two old, non-comparable estimates shown side
-              by side, never averaged into one "best guess": the top row uses NSSO's ~41% OBC estimate, the bottom
-              uses the Mandal Commission's ~52% estimate. Each row's General segment is just the leftover (100% −
-              SC% − ST% − OBC%) under that row's own OBC assumption — so the two rows aren't comparable
-              point-for-point beyond their shared SC/ST segments.
+          <h2>Sources</h2>
+          {Object.entries(population.data.sources).map(([key, src]) => (
+            <p key={key} style={{ fontSize: 12.5, marginBottom: 8 }}>
+              <strong>{key.replace(/_/g, "-")}:</strong> {src.report} ({src.publisher}) —{" "}
+              <a href={src.url} target="_blank" rel="noreferrer">
+                source
+              </a>
             </p>
-          </ChartHelp>
-          <p className="card-note">{distribution.data.note}</p>
-          <ResponsiveContainer width="100%" height={180}>
-            <BarChart
-              layout="vertical"
-              data={distribution.data.scenarios.map((s) => ({
-                label: s.id === "nsso" ? "NSSO estimate" : "Mandal Commission estimate",
-                SC: s.sc_pct,
-                ST: s.st_pct,
-                OBC: s.obc_pct,
-                General: s.general_pct,
-              }))}
-              margin={{ top: 10, right: 20, bottom: 18, left: 4 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-              <XAxis
-                type="number"
-                domain={[0, 100]}
-                unit="%"
-                tick={{ fontSize: 12 }}
-                label={{ value: "% of population", position: "insideBottom", offset: -8, fontSize: 11.5, fill: "var(--color-text-muted)" }}
-              />
-              <YAxis type="category" dataKey="label" width={150} tick={{ fontSize: 12 }} />
-              <Tooltip contentStyle={{ fontSize: 13, borderRadius: 8 }} formatter={(v: number) => `${v}%`} />
-              <Bar dataKey="SC" stackId="a" fill={CATEGORY_COLOR.SC} />
-              <Bar dataKey="ST" stackId="a" fill={CATEGORY_COLOR.ST} />
-              <Bar dataKey="OBC" stackId="a" fill={CATEGORY_COLOR.OBC} />
-              <Bar dataKey="General" stackId="a" fill={CATEGORY_COLOR.General} />
-            </BarChart>
-          </ResponsiveContainer>
-          <div className="legend-row">
-            <span>
-              <span className="swatch" style={{ background: CATEGORY_COLOR.SC }} /> SC ({distribution.data.scenarios[0].sc_pct}%, both rows)
-            </span>
-            <span>
-              <span className="swatch" style={{ background: CATEGORY_COLOR.ST }} /> ST ({distribution.data.scenarios[0].st_pct}%, both rows)
-            </span>
-            <span>
-              <span className="swatch" style={{ background: CATEGORY_COLOR.OBC }} /> OBC (estimated)
-            </span>
-            <span>
-              <span className="swatch" style={{ background: CATEGORY_COLOR.General }} /> General/Other (residual)
-            </span>
-          </div>
-          <p className="card-note" style={{ marginTop: 10 }}>
-            {distribution.data.scenarios.map((s, i) => (
-              <span key={s.id}>
-                {i > 0 && " "}
-                <strong>{s.obc_source}:</strong> OBC {s.obc_pct}% → General/Other ≈{s.general_pct}%.
-              </span>
-            ))}
-          </p>
+          ))}
         </div>
       )}
     </div>

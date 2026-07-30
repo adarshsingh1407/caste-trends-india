@@ -145,6 +145,7 @@ def build_population_trend_output() -> dict:
             {"year": r["year"], "sc_pct": r["sc_pct"], "st_pct": r["st_pct"], "is_projected": r["is_projected"]}
             for r in rows
         ],
+        "sources": reference["sources"],
     }
 
 

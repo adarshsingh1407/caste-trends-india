@@ -40,6 +40,7 @@ export interface PopulationShareTrendData {
   };
   obc_general_note: string;
   years: { year: number; sc_pct: number; st_pct: number; is_projected: boolean }[];
+  sources: Record<string, { report: string; publisher: string; url: string }>;
 }
 
 export interface PopulationDistributionEstimateData {

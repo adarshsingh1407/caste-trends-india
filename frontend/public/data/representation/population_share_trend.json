@@ -103,5 +103,32 @@
       "st_pct": 9.71,
       "is_projected": true
     }
-  ]
+  ],
+  "sources": {
+    "census_2001": {
+      "report": "Census of India 2001",
+      "publisher": "Office of the Registrar General & Census Commissioner, India",
+      "url": "https://censusindia.gov.in"
+    },
+    "census_2011": {
+      "report": "Census of India 2011",
+      "publisher": "Office of the Registrar General & Census Commissioner, India",
+      "url": "https://censusindia.gov.in"
+    },
+    "un_wpp": {
+      "report": "World Population Prospects: The 2024 Revision",
+      "publisher": "UN Department of Economic and Social Affairs, Population Division",
+      "url": "https://www.un.org/development/desa/pd/world-population-prospects-2024"
+    },
+    "nsso": {
+      "report": "Employment and Unemployment Survey, NSS 55th Round (1999-2000) -- the source of the commonly-cited ~41% OBC estimate; the 61st Round (2004-05) covers the same ground",
+      "publisher": "National Sample Survey Office (NSSO), Ministry of Statistics and Programme Implementation",
+      "url": "https://microdata.gov.in/nada/index.php/catalog/90"
+    },
+    "mandal_commission": {
+      "report": "Report of the Backward Classes Commission (\"Mandal Commission Report\"), 1980",
+      "publisher": "Government of India",
+      "url": "https://eparlib.nic.in/handle/123456789/822932"
+    }
+  }
 }
