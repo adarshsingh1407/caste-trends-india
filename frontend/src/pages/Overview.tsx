@@ -82,14 +82,14 @@ function TrackWidget({
           ))}
         </div>
       )}
-      <div className="track-widget-verdict" style={{ color: verdictColor }}>
-        {direction === "up" ? "▲" : "▼"} {verdict}
-        {tone !== "neutral" && (
-          <>
-            {" "}
-            <ThumbIcon tone={tone} />
-          </>
-        )}
+      <div
+        className="track-widget-verdict"
+        style={{ color: verdictColor, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}
+      >
+        <span>
+          {direction === "up" ? "▲" : "▼"} {verdict}
+        </span>
+        {tone !== "neutral" && <ThumbIcon tone={tone} />}
       </div>
     </div>
   );
